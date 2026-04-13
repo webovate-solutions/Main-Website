@@ -1,0 +1,20 @@
+/* Webovate – Master stylesheet (imports) */
+
+@import url("css/00-variables.css");
+@import url("css/01-reset-base.css");
+@import url("css/02-layout.css");
+@import url("css/03-typography.css");
+@import url("css/04-header-nav.css");
+@import url("css/05-buttons.css");
+@import url("css/06-hero.css");
+@import url("css/07-cards-grid-pricing.css");
+@import url("css/08-forms.css");
+@import url("css/09-footer.css");
+@import url("css/12-modal.css");
+
+/* page/section specific */
+@import url("css/10-prototypes.css");
+@import url("css/11-team.css");
+
+/* keep responsive at the end */
+@import url("css/99-responsive.css");

@@ -1,0 +1,61 @@
+/* Grid */
+.grid-3 {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cards */
+.card,
+.price-card {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 22px;
+  box-shadow: 0 1px 0 rgba(2,6,23,0.03);
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+
+.card:hover,
+.price-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Pricing */
+.price-card ul { list-style: none; margin-top: 14px; }
+.price-card li {
+  color: var(--muted);
+  padding: 8px 0;
+  border-top: 1px solid rgba(15,23,42,0.06);
+}
+.price-card li:first-child { border-top: 0; }
+
+.price {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 12px 0 10px;
+}
+
+/* Highlight */
+.price-card.highlight {
+  border-color: rgba(37,99,235,0.35);
+  box-shadow: 0 20px 60px rgba(37,99,235,0.10);
+  position: relative;
+}
+.price-card.highlight::before {
+  content: "Beliebt";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(37,99,235,0.12);
+  border: 1px solid rgba(37,99,235,0.22);
+  color: var(--accent);
+}
