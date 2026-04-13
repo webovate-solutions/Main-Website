@@ -1,20 +1,1189 @@
-/* Webovate – Master stylesheet (imports) */
+/* ================================================
+   Webovate Solutions – Stylesheet
+   ================================================
+   Design: Dunkel & Modern – selbstbewusst, clean
+   ================================================
+   1.  CSS Variablen
+   2.  Reset & Basis
+   3.  Hilfsklassen
+   4.  Buttons
+   5.  Header & Navigation
+   6.  Hero
+   7.  Services
+   8.  Prozess
+   9.  Prototypen
+   10. Preise
+   11. Kontakt
+   12. Footer
+   13. Modal
+   14. Responsive
+   ================================================ */
 
-@import url("css/00-variables.css");
-@import url("css/01-reset-base.css");
-@import url("css/02-layout.css");
-@import url("css/03-typography.css");
-@import url("css/04-header-nav.css");
-@import url("css/05-buttons.css");
-@import url("css/06-hero.css");
-@import url("css/07-cards-grid-pricing.css");
-@import url("css/08-forms.css");
-@import url("css/09-footer.css");
-@import url("css/12-modal.css");
 
-/* page/section specific */
-@import url("css/10-prototypes.css");
-@import url("css/11-team.css");
+/* ================================================
+   1. CSS VARIABLEN
+   ================================================ */
 
-/* keep responsive at the end */
-@import url("css/99-responsive.css");
+:root {
+  /* Farben */
+  --clr-dark:       #0d0d0d;      /* Fast Schwarz – Haupthintergrund */
+  --clr-dark-2:     #161616;      /* Karten & Sektionen */
+  --clr-dark-3:     #1f1f1f;      /* Hover-Zustände */
+  --clr-accent:     #c8f547;      /* Gelbgrün – Akzentfarbe */
+  --clr-accent-dim: #a8d030;      /* Gedämpfter Akzent */
+  --clr-white:      #ffffff;
+  --clr-text:       #f0f0f0;      /* Haupttext (hell) */
+  --clr-text-muted: #888888;      /* Nebentext */
+  --clr-border:     #2a2a2a;      /* Rahmen */
+
+  /* Schriften */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Abstände & Effekte */
+  --radius:     10px;
+  --radius-lg:  20px;
+  --shadow:     0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-lg:  0 8px 48px rgba(0, 0, 0, 0.5);
+  --transition: 0.25s ease;
+}
+
+
+/* ================================================
+   2. RESET & BASIS
+   ================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-dark);
+  color: var(--clr-text);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ================================================
+   3. HILFSKLASSEN
+   ================================================ */
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.section {
+  padding: 120px 0;
+}
+
+/* Überschriften-Bereich */
+.section-header {
+  margin-bottom: 64px;
+}
+
+.section-header.centered {
+  text-align: center;
+}
+
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 14px;
+}
+
+.section-header h2,
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  color: var(--clr-white);
+  line-height: 1.15;
+  margin-bottom: 0;
+}
+
+.section-desc {
+  margin-top: 16px;
+  color: var(--clr-text-muted);
+  font-size: 1.05rem;
+  max-width: 480px;
+  line-height: 1.75;
+}
+
+
+/* ================================================
+   4. BUTTONS
+   ================================================ */
+
+/* Primär – Akzentfarbe ausgefüllt */
+.btn-primary {
+  display: inline-block;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-primary:hover {
+  background: var(--clr-accent-dim);
+  transform: translateY(-2px);
+}
+
+/* Ghost – transparenter Rahmen */
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: var(--clr-white);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--clr-border);
+  transition: all var(--transition);
+}
+.btn-ghost:hover {
+  border-color: var(--clr-text-muted);
+  background: var(--clr-dark-3);
+}
+
+/* Outline – für Preiskarten */
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--clr-accent);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid var(--clr-accent);
+  transition: all var(--transition);
+  text-align: center;
+}
+.btn-outline:hover {
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+}
+
+/* Text-Link */
+.btn-text {
+  display: inline-block;
+  color: var(--clr-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--clr-border);
+  padding-bottom: 2px;
+  transition: color var(--transition), border-color var(--transition);
+}
+.btn-text:hover {
+  color: var(--clr-white);
+  border-color: var(--clr-text-muted);
+}
+
+/* Nav-Button */
+.btn-nav {
+  display: inline-block;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition);
+}
+.btn-nav:hover {
+  background: var(--clr-accent-dim);
+}
+
+
+/* ================================================
+   5. HEADER & NAVIGATION
+   ================================================ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: background var(--transition), padding var(--transition), border-color var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+/* Beim Scrollen: Hintergrund einblenden */
+.header.scrolled {
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(16px);
+  padding: 14px 0;
+  border-bottom-color: var(--clr-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--clr-white);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.logo-dot {
+  color: var(--clr-accent);
+}
+
+/* Nav-Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.nav-links a:hover {
+  color: var(--clr-white);
+}
+
+/* Burger (mobil) */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--clr-white);
+  transition: all var(--transition);
+}
+
+
+/* ================================================
+   6. HERO
+   ================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+/* Dezentes Grid-Muster im Hintergrund */
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--clr-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
+/* Kleines Label über der Überschrift */
+.hero-badge {
+  display: inline-block;
+  background: var(--clr-dark-2);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  color: var(--clr-white);
+  line-height: 1.08;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+/* Kursiver Teil der Überschrift */
+.hero h1 em {
+  font-style: italic;
+  color: var(--clr-accent);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--clr-text-muted);
+  max-width: 500px;
+  margin-bottom: 44px;
+  line-height: 1.75;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 72px;
+}
+
+/* Statistiken im Hero */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.stat { display: flex; flex-direction: column; }
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--clr-white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--clr-border);
+}
+
+
+/* ================================================
+   7. SERVICES
+   ================================================ */
+
+.services-section { background: var(--clr-dark-2); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--clr-dark-2);
+  padding: 40px 32px;
+  border-right: 1px solid var(--clr-border);
+  transition: background var(--transition);
+}
+.service-card:last-child { border-right: none; }
+.service-card:hover { background: var(--clr-dark-3); }
+
+.service-icon {
+  font-size: 1.5rem;
+  color: var(--clr-accent);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--clr-white);
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.92rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+}
+
+
+/* ================================================
+   8. PROZESS
+   ================================================ */
+
+.process-section { background: var(--clr-dark); }
+
+.process-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.process-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+/* Große Schrittnummer */
+.step-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--clr-border);
+  line-height: 1;
+  transition: color var(--transition);
+}
+.process-step:hover .step-number { color: var(--clr-accent); }
+
+.step-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--clr-white);
+  margin-bottom: 10px;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+/* Verbindungslinie zwischen Schritten */
+.process-connector {
+  flex-shrink: 0;
+  width: 80px;
+  height: 1px;
+  background: var(--clr-border);
+  margin-top: 28px;
+}
+
+
+/* ================================================
+   9. PROTOTYPEN
+   ================================================ */
+
+.prototypes-section { background: var(--clr-dark-2); }
+
+.proto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.proto-card {
+  background: var(--clr-dark);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.proto-card:hover {
+  border-color: var(--clr-text-muted);
+  transform: translateY(-4px);
+}
+
+/* Vorschau-Fläche */
+.proto-preview {
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+/* Verschiedene Farben pro Branche */
+.cafe-preview {
+  background: linear-gradient(135deg, #3d2a1e 0%, #7a5c3a 100%);
+}
+.handwerker-preview {
+  background: linear-gradient(135deg, #1a2a3a 0%, #2d4a6a 100%);
+}
+.pflege-preview {
+  background: linear-gradient(135deg, #3a1a1a 0%, #7a3a3a 100%);
+}
+
+.preview-label {
+  background: rgba(0,0,0,0.5);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.proto-info { padding: 28px; }
+
+.proto-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.proto-tags span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  background: rgba(200, 245, 71, 0.08);
+  border: 1px solid rgba(200, 245, 71, 0.2);
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+.proto-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--clr-white);
+  margin-bottom: 10px;
+}
+
+.proto-info p {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.proto-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+/* ================================================
+   10. PREISE
+   ================================================ */
+
+.pricing-section { background: var(--clr-dark); }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.price-card {
+  background: var(--clr-dark-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: relative;
+  transition: border-color var(--transition);
+}
+.price-card:hover { border-color: var(--clr-text-muted); }
+
+/* Hervorgehobene Karte */
+.price-card.featured {
+  border-color: var(--clr-accent);
+  background: linear-gradient(135deg, #161f00 0%, var(--clr-dark-2) 100%);
+}
+.price-card.featured:hover { border-color: var(--clr-accent-dim); }
+
+/* "Beliebteste Wahl" Badge */
+.price-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.price-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-bottom: 10px;
+}
+
+.price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.price-currency {
+  font-size: 1.2rem;
+  color: var(--clr-text-muted);
+  font-weight: 300;
+}
+
+.price-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--clr-white);
+  line-height: 1;
+}
+
+.price-period {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+}
+
+.price-desc {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+}
+
+/* Feature-Liste */
+.price-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.price-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--clr-text);
+}
+
+.price-features li.muted {
+  color: var(--clr-text-muted);
+}
+
+.check {
+  color: var(--clr-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Hinweistext unter Preiskarten */
+.pricing-note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+}
+
+
+/* ================================================
+   11. KONTAKT
+   ================================================ */
+
+.contact-section { background: var(--clr-dark-2); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--clr-white);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.contact-text > p {
+  color: var(--clr-text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color var(--transition);
+}
+.contact-detail:hover {
+  color: var(--clr-white);
+}
+
+.detail-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--clr-dark-3);
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Kontaktformular */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Zweispaltiges Formularfeld */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--clr-dark);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--clr-text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--clr-text-muted);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--clr-accent);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .btn-primary {
+  align-self: flex-start;
+}
+
+
+/* ================================================
+   12. FOOTER
+   ================================================ */
+
+.footer {
+  background: var(--clr-dark);
+  border-top: 1px solid var(--clr-border);
+  padding-top: 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.footer-brand p {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  margin-top: 16px;
+  max-width: 280px;
+}
+
+.footer-logo-text {
+  font-size: 1.3rem;
+}
+
+.footer-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-links a:hover {
+  color: var(--clr-white);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-legal a {
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-legal a:hover {
+  color: var(--clr-white);
+}
+
+
+/* ================================================
+   13. MODAL
+   ================================================ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.modal.open {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.modal-dialog {
+  position: relative;
+  background: var(--clr-dark-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  max-width: 480px;
+  width: 100%;
+  transform: translateY(20px);
+  transition: transform var(--transition);
+}
+
+.modal.open .modal-dialog {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--clr-text-muted);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: color var(--transition);
+  line-height: 1;
+}
+.modal-close:hover {
+  color: var(--clr-white);
+}
+
+.modal-dialog h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--clr-white);
+  margin-bottom: 8px;
+}
+
+.modal-sub {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 28px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--clr-dark);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--clr-text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.modal-form input::placeholder,
+.modal-form textarea::placeholder {
+  color: var(--clr-text-muted);
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: var(--clr-accent);
+}
+
+.modal-form textarea {
+  resize: vertical;
+}
+
+.modal-form .btn-primary {
+  margin-top: 4px;
+}
+
+
+/* ================================================
+   14. RESPONSIVE
+   ================================================ */
+
+
+/* ---- Tablet (max. 900px) ---- */
+@media (max-width: 900px) {
+
+  /* Weniger vertikaler Abstand in Sektionen */
+  .section {
+    padding: 80px 0;
+  }
+
+  /* Services: 2 Spalten statt 4 */
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Rahmen anpassen – rechts weg, unten hinzufügen */
+  .service-card {
+    border-right: none;
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .service-card:last-child {
+    border-bottom: none;
+  }
+
+  /* Prozess-Schritte werden vertikal gestapelt */
+  .process-steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  /* Verbindungslinie wird zur vertikalen Linie */
+  .process-connector {
+    width: 1px;
+    height: 40px;
+    margin-top: 0;
+    margin-left: 28px;
+  }
+
+  /* Schritt-Layout: Icon und Text nebeneinander */
+  .process-step {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .step-content {
+    text-align: left;
+  }
+
+  .step-content p {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Kontakt: einspaltig */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  /* Footer: zweispaltig */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+
+/* ---- Smartphone (max. 640px) ---- */
+@media (max-width: 640px) {
+
+  /* Navigation: Burger-Menü aktivieren */
+  .nav {
+    position: relative;
+  }
+
+  /* Links standardmäßig ausblenden */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--clr-dark-2);
+    border-top: 1px solid var(--clr-border);
+    padding: 20px 28px;
+    gap: 20px;
+  }
+
+  /* Links einblenden wenn Menü offen */
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Burger-Icon sichtbar machen */
+  .nav-burger {
+    display: flex;
+  }
+
+  /* Hero: kleinere Überschrift */
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  /* Statistiken umbrechen */
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  /* Buttons untereinander */
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  /* Services: einspaltig */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Prototypen: einspaltig */
+  .proto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Preiskarten: einspaltig */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Kontaktformular: Name & E-Mail untereinander */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer: einspaltig */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modal: weniger Innenabstand */
+  .modal-dialog {
+    padding: 32px 24px;
+  }
+}

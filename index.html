@@ -6,262 +6,371 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Webovate Solutions – Webseiten als Service</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="js/script.js" defer></script>
-  <script src="js/modal.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- HEADER -->
-  <header class="header">
+  <header class="header" id="header">
     <div class="container nav">
-      <h2 class="logo">Webovate Solutions</h2>
-      <nav>
-        <a href="#services">Service</a>
-        <a href="#prototypes">Prototypen</a>
+      <a href="#" class="logo">Webovate<span class="logo-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="#services">Leistungen</a>
+        <a href="#process">Ablauf</a>
+        <a href="#prototypes">Demos</a>
         <a href="#pricing">Preise</a>
-        <a href="team.html">Das sind Wir</a>
-        <a href="#contact" class="btn-small js-open-contact">Kontakt</a>
+        <a href="#contact" class="btn-nav">Erstgespräch →</a>
       </nav>
+      <button class="nav-burger" id="burger" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg-grid"></div>
     <div class="container hero-content">
-      <h1>Webseiten als Service<br>für kleine Unternehmen</h1>
-      <p>
-        Wir erstellen, hosten und pflegen deine Website –
-        zum monatlichen Fixpreis. Einfach. Zuverlässig. Modern.
+      <div class="hero-badge">✦ Webseiten als Service</div>
+      <h1>Deine Website.<br><em>Unser Job.</em></h1>
+      <p class="hero-sub">
+        Wir erstellen, hosten und pflegen professionelle Websites für kleine Unternehmen –
+        zum monatlichen Fixpreis. Kein Stress. Keine Überraschungen.
       </p>
       <div class="hero-buttons">
         <a href="#pricing" class="btn-primary">Pakete ansehen</a>
-        <a href="#contact" class="btn-secondary js-open-contact">Erstgespräch</a>
+        <a href="#contact" class="btn-ghost js-open-contact">Kostenloses Erstgespräch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Demo-Designs</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">49€</span>
+          <span class="stat-label">ab / Monat</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">24h</span>
+          <span class="stat-label">Reaktionszeit</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="section">
+  <section id="services" class="section services-section">
     <div class="container">
-      <h2>Warum Webovate Solutions?</h2>
-      <div class="grid-3">
-        <div class="card">
+      <div class="section-header">
+        <p class="section-eyebrow">Warum Webovate?</p>
+        <h2>Alles aus einer Hand –<br>ohne Kopfschmerzen</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">◎</div>
           <h3>Keine Einmalkosten</h3>
-          <p>Professionelle Website ohne hohe Startinvestition.</p>
+          <p>Professionelle Website ohne hohe Startinvestition. Du zahlst nur monatlich – fair und planbar.</p>
         </div>
-        <div class="card">
+        <div class="service-card">
+          <div class="service-icon">◈</div>
           <h3>Fixer Monatspreis</h3>
-          <p>Planbare Kosten inkl. Wartung & Support.</p>
+          <p>Hosting, Wartung und Support sind immer inklusive. Keine versteckten Kosten, nie.</p>
         </div>
-        <div class="card">
+        <div class="service-card">
+          <div class="service-icon">◇</div>
           <h3>Änderungen inklusive</h3>
-          <p>Texte, Bilder oder kleine Anpassungen jederzeit.</p>
+          <p>Neue Öffnungszeiten, ein neues Bild, ein neuer Text? Schreib uns – wir kümmern uns.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">◉</div>
+          <h3>Moderne Designs</h3>
+          <p>Kein Template-Einheitsbrei. Jede Website wird individuell auf dein Unternehmen angepasst.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- PROCESS -->
+  <section id="process" class="section process-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-eyebrow">So einfach geht's</p>
+        <h2>In 3 Schritten<br>zur fertigen Website</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Kostenloses Erstgespräch</h3>
+            <p>Wir lernen dein Unternehmen kennen, klären deine Wünsche und wählen gemeinsam das passende Paket.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Wir bauen deine Website</h3>
+            <p>Innerhalb weniger Tage erstellen wir deine individuelle Website – du gibst Feedback, wir setzen es um.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Online & sorglos</h3>
+            <p>Deine Website geht live. Wir kümmern uns um Hosting, Updates und alle Änderungen – dauerhaft.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- PROTOTYPES -->
-  <section id="prototypes" class="section light">
+  <section id="prototypes" class="section prototypes-section">
     <div class="container">
-      <h2>Unsere Prototypen</h2>
-      <p class="section-text">
-        Wähle ein Design als Grundlage – wir passen Farben, Inhalte und Struktur an dein Unternehmen an.
-      </p>
-
-      <div class="grid-3">
-
-        <!-- Prototyp: Cafe -->
-        <div class="card proto-card">
-          <div class="proto-preview" aria-hidden="true"></div>
-          <h3>Café – Warm & Editorial</h3>
-          <p>Info-Onepager für Cafés & lokale Shops. Fokus auf Öffnungszeiten, Menü & Standort.</p>
-
-          <div class="proto-actions">
-            <a href="demos/cafe/cafe.html" target="_blank" rel="noopener" class="btn-primary">Live Demo</a>
-            <a href="#contact" class="btn-secondary select-style js-open-contact" data-style="Café – Warm & Editorial">
-              Diesen Stil wählen
-            </a>
-
+      <div class="section-header">
+        <p class="section-eyebrow">Unsere Referenzen</p>
+        <h2>Designs für<br>jede Branche</h2>
+        <p class="section-desc">Wähle ein Design als Grundlage – wir passen Farben, Inhalte und Struktur komplett an dein Unternehmen an.</p>
+      </div>
+      <div class="proto-grid">
+        <div class="proto-card">
+          <div class="proto-preview cafe-preview">
+            <div class="preview-label">Café & Gastronomie</div>
           </div>
-
-          <p class="proto-tags">
-            <span>Onepager</span>
-            <span>Info-Seite</span>
-            <span>Lokal</span>
-          </p>
-        </div>
-
-        <!-- Prototyp: Handwerker -->
-        <div class="card proto-card">
-          <div class="proto-preview alt" aria-hidden="true"></div>
-          <h3>Handwerker – Klar & Vertrauensvoll</h3>
-          <p>Lorem ipsum dolor sit amet – Prototyp folgt.</p>
-
-          <div class="proto-actions">
-            <a href="demos/handwerker/handwerker.html" target="_blank" rel="noopener" class="btn-primary"
-              aria-disabled="true">Livedemo</a>
-            <a href="#contact" class="btn-secondary select-style js-open-contact" data-style="Handwerker – Klar & Vertrauensvoll">
-              Diesen Stil wählen
-            </a>
+          <div class="proto-info">
+            <div class="proto-tags"><span>Onepager</span><span>Menü</span><span>Lokal</span></div>
+            <h3>Warm & Editorial</h3>
+            <p>Fokus auf Atmosphäre, Öffnungszeiten und Standort. Perfekt für Cafés und lokale Shops.</p>
+            <div class="proto-actions">
+              <a href="demos/cafe/cafe.html" target="_blank" rel="noopener" class="btn-primary">Live Demo →</a>
+              <a href="#contact" class="btn-text js-open-contact">Diesen Stil wählen</a>
+            </div>
           </div>
-
-          <p class="proto-tags">
-            <span>Onepager</span>
-            <span>Leistungen</span>
-            <span>Kontakt</span>
-          </p>
         </div>
-
-        <!-- Platzhalter 3 -->
-        <div class="card proto-card">
-          <div class="proto-preview" aria-hidden="true"></div>
-          <h3>Coach – Modern & Minimal</h3>
-          <p>Lorem ipsum dolor sit amet – Prototyp folgt.</p>
-
-          <div class="proto-actions">
-            <a href="demos/coach/coach.html" target="_blank" rel="noopener" class="btn-primary"
-              aria-disabled="true">Livedemos</a>
-            <a href="#contact" class="btn-secondary select-style js-open-contact" data-style="Coach – Modern & Minimal">
-              Diesen Stil wählen
-            </a>
+        <div class="proto-card">
+          <div class="proto-preview handwerker-preview">
+            <div class="preview-label">Handwerk & Gewerbe</div>
           </div>
-
-          <p class="proto-tags">
-            <span>Mehrseitig</span>
-            <span>Vertrauen</span>
-            <span>Branding</span>
-          </p>
+          <div class="proto-info">
+            <div class="proto-tags"><span>Mehrseitig</span><span>Leistungen</span><span>Kontakt</span></div>
+            <h3>Klar & Vertrauensvoll</h3>
+            <p>Übersichtliche Darstellung von Leistungen, Kontakt und Referenzen. Ideal für Handwerksbetriebe.</p>
+            <div class="proto-actions">
+              <a href="demos/handwerker/handwerker.html" target="_blank" rel="noopener" class="btn-primary">Live Demo →</a>
+              <a href="#contact" class="btn-text js-open-contact">Diesen Stil wählen</a>
+            </div>
+          </div>
         </div>
-
+        <div class="proto-card">
+          <div class="proto-preview pflege-preview">
+            <div class="preview-label">Pflege & Gesundheit</div>
+          </div>
+          <div class="proto-info">
+            <div class="proto-tags"><span>Mehrseitig</span><span>Vertrauen</span><span>Seriös</span></div>
+            <h3>Warm & Professionell</h3>
+            <p>Einfühlsames Design für Pflegedienste und Gesundheitsdienstleister. Vertrauen auf den ersten Blick.</p>
+            <div class="proto-actions">
+              <a href="demos/pflege/pflege.html" target="_blank" rel="noopener" class="btn-primary">Live Demo →</a>
+              <a href="#contact" class="btn-text js-open-contact">Diesen Stil wählen</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
 
   <!-- PRICING -->
-  <section id="pricing" class="section">
+  <section id="pricing" class="section pricing-section">
     <div class="container">
-      <h2>Unsere Pakete</h2>
-
-      <div class="grid-3">
+      <div class="section-header centered">
+        <p class="section-eyebrow">Transparente Preise</p>
+        <h2>Ein Paket für<br>jeden Bedarf</h2>
+      </div>
+      <div class="pricing-grid">
         <div class="price-card">
-          <h3>Starter</h3>
-          <p class="price">49,99 € / Monat</p>
-          <ul>
-            <li>Onepager</li>
-            <li>Hosting & Wartung</li>
-            <li>1 Änderung / Monat</li>
+          <div class="price-card-top">
+            <p class="price-name">Starter</p>
+            <div class="price-amount">
+              <span class="price-currency">€</span>
+              <span class="price-num">49</span>
+              <span class="price-period">/ Monat</span>
+            </div>
+            <p class="price-desc">Ideal für Einzelunternehmer und Einsteiger.</p>
+          </div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Onepager (1 Seite)</li>
+            <li><span class="check">✓</span> Hosting & Wartung</li>
+            <li><span class="check">✓</span> SSL-Zertifikat</li>
+            <li><span class="check">✓</span> 1 Änderung / Monat</li>
+            <li><span class="check">✓</span> Kontaktformular</li>
+            <li class="muted"><span>–</span> Mehrere Unterseiten</li>
+            <li class="muted"><span>–</span> Priorisierter Support</li>
           </ul>
+          <a href="#contact" class="btn-outline js-open-contact">Jetzt starten</a>
         </div>
-
-        <div class="price-card highlight">
-          <h3>Business</h3>
-          <p class="price">89,99 € / Monat</p>
-          <ul>
-            <li>Mehrseitige Website</li>
-            <li>Hosting & Wartung</li>
-            <li>2 Änderungen / Monat</li>
+        <div class="price-card featured">
+          <div class="price-badge">Beliebteste Wahl</div>
+          <div class="price-card-top">
+            <p class="price-name">Business</p>
+            <div class="price-amount">
+              <span class="price-currency">€</span>
+              <span class="price-num">89</span>
+              <span class="price-period">/ Monat</span>
+            </div>
+            <p class="price-desc">Für wachsende Unternehmen mit mehr Bedarf.</p>
+          </div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Bis zu 5 Unterseiten</li>
+            <li><span class="check">✓</span> Hosting & Wartung</li>
+            <li><span class="check">✓</span> SSL-Zertifikat</li>
+            <li><span class="check">✓</span> 3 Änderungen / Monat</li>
+            <li><span class="check">✓</span> Kontaktformular</li>
+            <li><span class="check">✓</span> Google Maps Integration</li>
+            <li class="muted"><span>–</span> Priorisierter Support</li>
           </ul>
+          <a href="#contact" class="btn-primary js-open-contact">Jetzt starten</a>
         </div>
-
         <div class="price-card">
-          <h3>Premium</h3>
-          <p class="price">139,99 € / Monat</p>
-          <ul>
-            <li>Branchenlösung</li>
-            <li>Priorisierter Support</li>
-            <li>4 Änderungen / Monat</li>
+          <div class="price-card-top">
+            <p class="price-name">Premium</p>
+            <div class="price-amount">
+              <span class="price-currency">€</span>
+              <span class="price-num">149</span>
+              <span class="price-period">/ Monat</span>
+            </div>
+            <p class="price-desc">Für Unternehmen die das Maximum wollen.</p>
+          </div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Individuelle Branchenlösung</li>
+            <li><span class="check">✓</span> Hosting & Wartung</li>
+            <li><span class="check">✓</span> SSL-Zertifikat</li>
+            <li><span class="check">✓</span> 5 Änderungen / Monat</li>
+            <li><span class="check">✓</span> Kontaktformular</li>
+            <li><span class="check">✓</span> Google Maps Integration</li>
+            <li><span class="check">✓</span> Priorisierter Support</li>
           </ul>
+          <a href="#contact" class="btn-outline js-open-contact">Jetzt starten</a>
         </div>
       </div>
+      <p class="pricing-note">Alle Preise zzgl. MwSt. · Monatlich kündbar · Keine Einrichtungsgebühr</p>
     </div>
   </section>
 
-  <!-- CONTACT MODAL -->
-  <div class="modal" id="contactModal" aria-hidden="true">
-    <div class="modal-overlay js-close-contact" tabindex="-1"></div>
-
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-      <button class="modal-close js-close-contact" type="button" aria-label="Popup schließen">×</button>
-
-      <h2 id="contactTitle">Kostenloses Erstgespräch</h2>
-      <p class="modal-sub">
-        Schreib uns kurz, was du brauchst – wir melden uns zeitnah.
-      </p>
-
-      <form action="https://formspree.io/f/xeeoowbk" method="POST" class="modal-form">
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="E-Mail" required />
-        <textarea id="message" name="message" placeholder="Kurz beschreiben, was du brauchst" required></textarea>
-
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-grid">
+      <div class="contact-text">
+        <p class="section-eyebrow">Kontakt</p>
+        <h2>Lass uns reden –<br>kostenlos & unverbindlich</h2>
+        <p>Schreib uns kurz was du brauchst. Wir melden uns innerhalb von 24 Stunden und beraten dich gerne.</p>
+        <div class="contact-details">
+          <a href="mailto:hello@webovate.de" class="contact-detail">
+            <span class="detail-icon">✉</span> hello@webovate.de
+          </a>
+        </div>
+      </div>
+      <form action="https://formspree.io/f/xeeoowbk" method="POST" class="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Dein Name" required />
+          <input type="email" name="email" placeholder="E-Mail-Adresse" required />
+        </div>
+        <input type="text" name="company" placeholder="Unternehmen (optional)" />
+        <textarea name="message" placeholder="Was brauchst du? Kurz beschreiben..." rows="5" required></textarea>
         <input type="hidden" name="_subject" value="Neue Anfrage über Webovate" />
-
-        <button type="submit" class="btn-primary">Absenden</button>
+        <button type="submit" class="btn-primary">Nachricht senden →</button>
       </form>
     </div>
-  </div>
-
-
-
+  </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-grid">
-
-      <!-- Brand -->
-      <div class="footer-col">
-        <h3 class="footer-logo">Webovate<span>.</span></h3>
-        <p class="footer-text">
-          Webseiten als Service für kleine Unternehmen – modern, planbar und ohne Stress.
-        </p>
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo-text">Webovate<span class="logo-dot">.</span></a>
+        <p>Webseiten als Service für kleine Unternehmen – modern, planbar und ohne Stress.</p>
       </div>
-
-      <!-- Links -->
       <div class="footer-col">
-        <p class="footer-title">Links</p>
+        <p class="footer-title">Navigation</p>
         <ul class="footer-links">
-          <li><a href="index.html#services">Service</a></li>
-          <li><a href="index.html#prototypes">Prototypen</a></li>
-          <li><a href="index.html#pricing">Preise</a></li>
-          <li><a href="team.html">Team</a></li>
+          <li><a href="#services">Leistungen</a></li>
+          <li><a href="#process">Ablauf</a></li>
+          <li><a href="#prototypes">Demos</a></li>
+          <li><a href="#pricing">Preise</a></li>
         </ul>
       </div>
-
-      <!-- Prototypen -->
       <div class="footer-col">
         <p class="footer-title">Demos</p>
         <ul class="footer-links">
           <li><a href="demos/cafe/cafe.html" target="_blank" rel="noopener">Café</a></li>
           <li><a href="demos/handwerker/handwerker.html" target="_blank" rel="noopener">Handwerker</a></li>
-          <li><a href="demos/coach/coach.html" target="_blank" rel="noopener">Coach</a></li>
+          <li><a href="demos/pflege/pflege.html" target="_blank" rel="noopener">Pflegedienst</a></li>
         </ul>
       </div>
-
-      <!-- Contact -->
       <div class="footer-col">
         <p class="footer-title">Kontakt</p>
         <ul class="footer-links">
           <li><a href="mailto:hello@webovate.de">hello@webovate.de</a></li>
-          <li><a href="tel:+49000000000">+49 000 000000</a></li>
         </ul>
       </div>
-
     </div>
-
     <div class="container footer-bottom">
       <p>© 2026 Webovate Solutions</p>
       <div class="footer-legal">
         <a href="impressum.html">Impressum</a>
-        <span class="dot">·</span>
+        <span>·</span>
         <a href="datenschutz.html">Datenschutz</a>
       </div>
     </div>
   </footer>
 
+  <!-- MODAL -->
+  <div class="modal" id="contactModal" aria-hidden="true">
+    <div class="modal-overlay js-close-contact"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close js-close-contact" aria-label="Schließen">×</button>
+      <h2>Kostenloses Erstgespräch</h2>
+      <p class="modal-sub">Schreib uns kurz was du brauchst – wir melden uns zeitnah.</p>
+      <form action="https://formspree.io/f/xeeoowbk" method="POST" class="modal-form">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="E-Mail" required />
+        <textarea name="message" placeholder="Kurz beschreiben, was du brauchst" rows="4" required></textarea>
+        <input type="hidden" name="_subject" value="Neue Anfrage über Webovate" />
+        <button type="submit" class="btn-primary">Absenden →</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    const modal = document.getElementById('contactModal');
+    document.querySelectorAll('.js-open-contact').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.js-close-contact').forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    const burger = document.getElementById('burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('active');
+    });
+  </script>
 
 </body>
-
 </html>

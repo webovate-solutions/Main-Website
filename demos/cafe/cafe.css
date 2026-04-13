@@ -1,441 +1,955 @@
-/* =========================
-   Café Prototype – Warm / Editorial
-   ========================= */
+/* ================================================
+   Café Aurora – Stylesheet
+   ================================================
+   Design: Warm & Editorial
+   Töne: Creme, Terrakotta, Dunkelbraun
+   Schriften: Cormorant Garamond + Outfit
+   ================================================
+   1.  CSS Variablen
+   2.  Reset & Basis
+   3.  Hilfsklassen
+   4.  Buttons
+   5.  Header & Navigation
+   6.  Hero
+   7.  Menü-Sektion
+   8.  Über uns
+   9.  Galerie
+   10. Öffnungszeiten
+   11. Kontakt
+   12. Footer
+   13. Responsive
+   ================================================ */
 
-:root{
-  --bg:#fbf7f2;
-  --paper:#ffffff;
-  --soft:#f3ede5;
 
-  --text:#1c140e;
-  --muted:#6b5b4f;
+/* ================================================
+   1. CSS VARIABLEN
+   ================================================ */
 
-  --accent:#b45309;     /* coffee */
-  --accent2:#0f766e;    /* subtle green */
 
-  --border: rgba(28, 20, 14, 0.12);
-  --shadow: 0 18px 60px rgba(28, 20, 14, 0.10);
+:root {
+  /* Farben */
+  --clr-cream:        #f7f2eb;    /* Haupthintergrund – warmes Creme */
+  --clr-cream-dark:   #ede5d8;    /* Karten & Sektionen */
+  --clr-terra:        #c4622d;    /* Terrakotta – Akzentfarbe */
+  --clr-terra-light:  #d4794a;    /* Helleres Terrakotta – Hover */
+  --clr-brown:        #2c1a0e;    /* Dunkelbraun – Haupttext */
+  --clr-brown-mid:    #6b4226;    /* Mittleres Braun – Nebentext */
+  --clr-brown-light:  #a07850;    /* Helles Braun – Muted Text */
+  --clr-white:        #ffffff;
+  --clr-border:       #ddd0bc;    /* Rahmenfarbe */
 
-  --radius: 18px;
-  --container: 1120px;
+  /* Schriften */
+  --font-display: 'Cormorant Garamond', Georgia, serif;   /* Überschriften – elegant */
+  --font-body:    'Outfit', sans-serif;                    /* Fließtext – modern */
+
+  /* Abstände & Effekte */
+  --radius:     8px;
+  --radius-lg:  16px;
+  --shadow:     0 4px 20px rgba(44, 26, 14, 0.08);
+  --shadow-lg:  0 8px 40px rgba(44, 26, 14, 0.14);
+  --transition: 0.28s ease;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+
+/* ================================================
+   2. RESET & BASIS
+   ================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container{max-width:var(--container);margin:0 auto;padding:0 20px}
-.section{padding:86px 0}
-.soft{background:var(--soft)}
-
-h1,h2,h3{letter-spacing:-0.02em}
-h1{
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  line-height: 1.05;
+html {
+  scroll-behavior: smooth;
 }
-h2{
-  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-cream);
+  color: var(--clr-brown);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ================================================
+   3. HILFSKLASSEN
+   ================================================ */
+
+/* Zentrierter Inhaltsbereich */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Standard-Sektionsabstand */
+.section {
+  padding: 100px 0;
+}
+
+/* Sektionen mit leicht anderem Hintergrund */
+.section.soft {
+  background: var(--clr-cream-dark);
+}
+
+/* Überschriften-Bereich einer Sektion */
+.section-head {
+  margin-bottom: 56px;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--clr-brown);
   line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
-h3{font-size:1.05rem}
 
-p{color:var(--muted)}
-strong{color:var(--text)}
+.section-head p {
+  font-size: 1rem;
+  color: var(--clr-brown-light);
+  max-width: 520px;
+  line-height: 1.75;
+}
 
-/* Header */
-.header{
+
+/* ================================================
+   4. BUTTONS
+   ================================================ */
+
+/* Basis-Button-Stile */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  letter-spacing: 0.03em;
+}
+
+/* Primär – Terrakotta ausgefüllt */
+.btn.primary {
+  background: var(--clr-terra);
+  color: var(--clr-white);
+  padding: 13px 28px;
+}
+
+.btn.primary:hover {
+  background: var(--clr-terra-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 98, 45, 0.3);
+}
+
+/* Ghost – transparenter Rahmen */
+.btn.ghost {
+  background: transparent;
+  color: var(--clr-brown);
+  padding: 12px 28px;
+  border: 1.5px solid var(--clr-border);
+}
+
+.btn.ghost:hover {
+  border-color: var(--clr-brown-mid);
+  background: var(--clr-cream-dark);
+}
+
+/* Kleiner Button – für Navigation */
+.btn.small {
+  background: var(--clr-terra);
+  color: var(--clr-white);
+  padding: 8px 18px;
+  font-size: 0.82rem;
+}
+
+.btn.small:hover {
+  background: var(--clr-terra-light);
+}
+
+/* Button-Gruppe */
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+/* ================================================
+   5. HEADER & NAVIGATION
+   ================================================ */
+
+.header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: rgba(251, 247, 242, 0.82);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  background: rgba(247, 242, 235, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--clr-border);
+  padding: 18px 0;
 }
-.nav{
-  height: 76px;
-  display:flex;
-  align-items:center;
+
+/* Flex-Container für Logo und Navigation */
+.nav {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
 }
-.brand{
-  display:flex;
-  align-items:center;
+
+/* Logo / Markenname */
+.brand {
+  display: flex;
+  align-items: center;
   gap: 10px;
-  text-decoration:none;
-  color: var(--text);
+  text-decoration: none;
 }
-.brand-mark{
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(180,83,9,0.18);
+
+/* Dekoratives Logo-Icon – Kaffeetassen-Silhouette via CSS */
+.brand-mark {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background: var(--clr-terra);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
 }
-.brand-name{
-  font-weight: 900;
+
+/* Tassen-Dampf-Effekt */
+.brand-mark::after {
+  content: '☕';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--clr-brown);
+  letter-spacing: -0.01em;
+}
+
+/* Navigationslinks */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--clr-brown-light);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.menu a:hover {
+  color: var(--clr-brown);
+}
+
+
+/* ================================================
+   6. HERO
+   ================================================ */
+
+.hero {
+  padding: 80px 0 100px;
+  background: var(--clr-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dekoratives Muster im Hintergrund */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(196, 98, 45, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Zweispaltiges Hero-Layout */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Kleines Label über der Hauptüberschrift */
+.kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-terra);
+  margin-bottom: 20px;
+}
+
+/* Hauptüberschrift */
+.hero-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  color: var(--clr-brown);
+  line-height: 1.08;
+  margin-bottom: 20px;
   letter-spacing: -0.02em;
+}
+
+/* Beschreibungstext */
+.lead {
   font-size: 1.05rem;
+  color: var(--clr-brown-light);
+  max-width: 460px;
+  line-height: 1.8;
+  margin-bottom: 36px;
 }
-.menu{
-  display:flex;
-  align-items:center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.menu a{
-  text-decoration:none;
-  color: var(--text);
-  font-weight: 750;
-  font-size: 0.95rem;
-  opacity: 0.92;
-}
-.menu a:hover{opacity:1}
 
-/* Buttons */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius: 999px;
-  padding: 12px 18px;
-  font-weight: 850;
-  text-decoration:none;
-  border: 1px solid transparent;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
-}
-.btn:hover{transform: translateY(-1px)}
-.btn.small{padding:10px 14px}
-.btn.primary{
-  background: var(--text);
-  color: #fff;
-  box-shadow: 0 10px 28px rgba(28, 20, 14, 0.14);
-}
-.btn.ghost{
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
-}
-.btn.full{width:100%}
-
-/* Hero */
-.hero{
-  padding: 110px 0 94px;
-  background:
-    radial-gradient(900px 500px at 18% 10%, rgba(180,83,9,0.20), transparent 60%),
-    radial-gradient(700px 480px at 88% 18%, rgba(15,118,110,0.14), transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg) 45%, var(--soft) 100%);
-  border-bottom: 1px solid var(--border);
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.35fr 0.95fr;
-  gap: 22px;
-  align-items: start;
-}
-.kicker{
-  display:inline-flex;
-  gap: 8px;
-  align-items:center;
-  font-weight: 900;
-  font-size: 0.82rem;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.55);
-  padding: 8px 12px;
-  border-radius: 999px;
-  width: fit-content;
-}
-.lead{margin-top: 12px; font-size: 1.06rem}
-.actions{margin-top: 22px; display:flex; gap: 12px; flex-wrap: wrap}
-
-.badges{
-  margin-top: 18px;
-  display:flex;
+/* Highlight-Badges unter den Buttons */
+.badges {
+  display: flex;
   gap: 10px;
   flex-wrap: wrap;
-}
-.badges span{
-  font-size: 0.85rem;
-  font-weight: 850;
-  color: var(--text);
-  background: rgba(180,83,9,0.10);
-  border: 1px solid rgba(180,83,9,0.22);
-  padding: 8px 12px;
-  border-radius: 999px;
+  margin-top: 28px;
 }
 
-/* Hero Card */
-.hero-card{
-  background: rgba(255,255,255,0.80);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
+.badges span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--clr-brown-mid);
+  background: var(--clr-cream-dark);
+  border: 1px solid var(--clr-border);
+  padding: 5px 12px;
+  border-radius: 50px;
+}
+
+/* Rechte Karte im Hero */
+.hero-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* Oberer Teil der Hero-Karte */
+.hero-card-top {
+  background: var(--clr-terra);
+  padding: 24px 28px;
+}
+
+.hero-card-top h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--clr-white);
+  margin-bottom: 4px;
+}
+
+.hero-card-top p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Liste der Tagesempfehlungen */
+.hero-card-list {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Einzelner Menüpunkt */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Farbiger Punkt vor dem Menüpunkt */
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--clr-terra);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.item-title {
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--clr-brown);
+  line-height: 1.2;
+}
+
+.item-sub {
+  font-size: 0.78rem;
+  color: var(--clr-brown-light);
+}
+
+.item-price {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-terra);
+  flex-shrink: 0;
+}
+
+/* Adresse & Öffnungszeit am unteren Rand der Karte */
+.mini-info {
+  padding: 16px 28px 24px;
+  border-top: 1px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mini-info p {
+  font-size: 0.82rem;
+  color: var(--clr-brown-light);
+}
+
+.mini-info strong {
+  color: var(--clr-brown-mid);
+}
+
+
+/* ================================================
+   7. MENÜ-SEKTION
+   ================================================ */
+
+/* 3-spaltiges Grid für Menükategorien */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Einzelne Menükategorie-Karte */
+.menu-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
   box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
 }
-.hero-card-top h3{
-  margin-bottom: 6px;
+
+.menu-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
 }
-.hero-card-list{
-  margin-top: 14px;
-  display:grid;
+
+.menu-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--clr-terra);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* Menüliste */
+.menu-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
-.item{
-  display:grid;
-  grid-template-columns: 14px 1fr auto;
-  gap: 10px;
-  align-items: start;
-  padding: 10px;
-  border-radius: 14px;
-  background: rgba(251, 247, 242, 0.6);
-  border: 1px solid rgba(28,20,14,0.08);
-}
-.dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  margin-top: 5px;
-  box-shadow: 0 0 0 5px rgba(180,83,9,0.15);
-}
-.item-title{font-weight: 950; color: var(--text)}
-.item-sub{font-size: 0.9rem}
-.item-price{font-weight: 950; color: var(--text)}
-.hint{font-size:0.9rem; margin-top: 10px}
 
-/* Section Head */
-.section-head{
-  max-width: 72ch;
-  display:grid;
-  gap: 10px;
+.menu-card ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+  color: var(--clr-brown);
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--clr-border);
 }
 
-/* Menu cards */
-.menu-grid{
-  margin-top: 28px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 16px;
+.menu-card ul li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
-.menu-card{
-  background: rgba(255,255,255,0.85);
-  border: 1px solid var(--border);
+
+.menu-card ul li span:last-child {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-terra);
+}
+
+/* Hinweis unter dem Menü */
+.note {
+  background: var(--clr-cream-dark);
+  border: 1px solid var(--clr-border);
   border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: 0 1px 0 rgba(28,20,14,0.03);
-}
-.menu-card ul{list-style:none;margin-top: 12px;display:grid;gap: 10px}
-.menu-card li{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-top: 10px;
-  border-top: 1px dashed rgba(28,20,14,0.16);
-  color: var(--muted);
-  font-weight: 700;
-}
-.menu-card li:first-child{border-top:0;padding-top:0}
-.menu-card li span:first-child{color: var(--text); font-weight: 900}
-
-.note{
-  margin-top: 18px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(180,83,9,0.22);
-  background: rgba(180,83,9,0.08);
+  padding: 16px 20px;
 }
 
-/* About */
-.about-grid{
-  display:grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 18px;
+.note p {
+  font-size: 0.88rem;
+  color: var(--clr-brown-light);
+}
+
+.note strong {
+  color: var(--clr-brown-mid);
+}
+
+
+/* ================================================
+   8. ÜBER UNS
+   ================================================ */
+
+/* Zweispaltiges Grid: Text links, Karte rechts */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
   align-items: start;
 }
-.pill-row{margin-top: 14px; display:flex; gap: 10px; flex-wrap: wrap}
-.pill{
-  display:inline-flex;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.55);
-  font-weight: 850;
-  color: var(--text);
-  font-size: 0.9rem;
+
+.about-grid h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--clr-brown);
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
-.about-card{
-  background: rgba(255,255,255,0.80);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
+
+.about-grid p {
+  font-size: 1rem;
+  color: var(--clr-brown-light);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* Pill-Tags */
+.pill-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--clr-terra);
+  background: rgba(196, 98, 45, 0.08);
+  border: 1px solid rgba(196, 98, 45, 0.2);
+  padding: 5px 14px;
+  border-radius: 50px;
+}
+
+/* Info-Karte rechts */
+.about-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
   box-shadow: var(--shadow);
 }
-.about-stats{
-  margin-top: 16px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
+
+.about-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--clr-brown);
+  margin-bottom: 12px;
 }
-.stat{
-  border: 1px solid rgba(28,20,14,0.10);
-  background: rgba(251,247,242,0.55);
-  border-radius: 14px;
-  padding: 12px;
+
+.about-card > p {
+  font-size: 0.9rem;
+  color: var(--clr-brown-light);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+/* Statistiken in der Info-Karte */
+.about-stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--clr-border);
+  padding-top: 20px;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 12px;
+  border-right: 1px solid var(--clr-border);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--clr-terra);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--clr-brown-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ================================================
+   9. GALERIE
+   ================================================ */
+
+/* Asymmetrisches Galerie-Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 200px 200px;
+  gap: 12px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Platzhalter-Bilder mit warmen Tönen */
+.ph {
+  border-radius: var(--radius);
+  transition: transform var(--transition), filter var(--transition);
+  cursor: pointer;
+}
+
+.ph:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Verschiedene Braun-Terrakotta-Töne für Platzhalter */
+.ph-1 { background: linear-gradient(135deg, #c4622d 0%, #d4794a 100%); }
+.ph-2 { background: linear-gradient(135deg, #8b5e3c 0%, #a07850 100%); }
+.ph-3 { background: linear-gradient(135deg, #6b4226 0%, #8b5e3c 100%); }
+.ph-4 { background: linear-gradient(135deg, #d4a574 0%, #e8c49a 100%); }
+.ph-5 { background: linear-gradient(135deg, #2c1a0e 0%, #4a2c14 100%); }
+.ph-6 { background: linear-gradient(135deg, #c4a882 0%, #d4bea0 100%); }
+
+/* Erstes Bild nimmt 2 Spalten ein */
+.ph-1 {
+  grid-column: span 2;
+}
+
+/* Letztes Bild nimmt 2 Spalten ein */
+.ph-6 {
+  grid-column: span 2;
+}
+
+
+/* ================================================
+   10. ÖFFNUNGSZEITEN
+   ================================================ */
+
+/* Zweispaltiges Layout: Text links, Tabelle rechts */
+.hours-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: start;
+}
+
+.hours-grid h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--clr-brown);
+  margin-bottom: 16px;
+}
+
+.hours-grid p {
+  font-size: 1rem;
+  color: var(--clr-brown-light);
+  line-height: 1.75;
+}
+
+/* Öffnungszeiten-Karte */
+.hours-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Einzelne Zeile mit Tag und Uhrzeit */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--clr-border);
+  font-size: 0.95rem;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row span:first-child {
+  font-weight: 500;
+  color: var(--clr-brown);
+}
+
+.row span:last-child {
+  color: var(--clr-brown-mid);
+}
+
+/* Gedimmte Zeile für Feiertage */
+.row.subtle span {
+  color: var(--clr-brown-light);
+  font-style: italic;
+}
+
+
+/* ================================================
+   11. KONTAKT
+   ================================================ */
+
+/* Zentrierter Kontaktbereich */
+.contact-simple {
+  max-width: 700px;
+  margin: 0 auto;
   text-align: center;
 }
-.stat-number{font-weight: 980; color: var(--text); font-size: 1.2rem}
-.stat-label{font-size: 0.9rem}
 
-/* Gallery */
-.gallery{
-  margin-top: 28px;
-  display:grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 12px;
+.contact-simple .section-head {
+  margin-bottom: 40px;
 }
-.ph{
-  min-height: 140px;
-  border-radius: 18px;
-  border: 1px solid rgba(28,20,14,0.10);
-  background:
-    radial-gradient(120px 90px at 30% 25%, rgba(180,83,9,0.22), transparent 60%),
-    radial-gradient(120px 90px at 75% 55%, rgba(15,118,110,0.14), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,0.75), rgba(251,247,242,0.45));
-}
-.ph-1{grid-column: span 5}
-.ph-2{grid-column: span 7}
-.ph-3{grid-column: span 4}
-.ph-4{grid-column: span 4}
-.ph-5{grid-column: span 4}
-.ph-6{grid-column: span 12; min-height: 180px}
 
-/* Hours */
-.hours-grid{
-  display:grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 18px;
-  align-items: start;
+/* 3-spaltiges Karten-Grid */
+.contact-cards.simple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
 }
-.hours-card{
-  background: rgba(255,255,255,0.85);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: 0 1px 0 rgba(28,20,14,0.03);
-}
-.row{
-  display:flex; justify-content:space-between; gap: 12px;
-  padding: 12px 0;
-  border-top: 1px solid rgba(28,20,14,0.10);
-  font-weight: 800;
-  color: var(--text);
-}
-.row:first-child{border-top:0;padding-top:0}
-.row.subtle{color: var(--muted); font-weight: 700}
 
-/* Contact */
-.contact-grid{
-  display:grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 18px;
-  align-items: start;
-}
-.contact-cards{
-  margin-top: 16px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 12px;
-}
-.mini-card{
-  background: rgba(255,255,255,0.80);
-  border: 1px solid rgba(28,20,14,0.10);
-  border-radius: 16px;
-  padding: 14px;
-}
-.mini-title{font-weight: 950; color: var(--text); margin-bottom: 6px}
-.mini-text{font-size: 0.95rem}
-
-.form{
-  background: rgba(255,255,255,0.85);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
+/* Einzelne Kontakt-Karte */
+.mini-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
   box-shadow: var(--shadow);
-  display:grid;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.mini-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.mini-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-terra);
+  margin-bottom: 8px;
+}
+
+.mini-text {
+  font-size: 0.92rem;
+  color: var(--clr-brown);
+  line-height: 1.5;
+}
+
+/* Button-Gruppe zentrieren */
+.contact-simple .actions {
+  justify-content: center;
+}
+
+
+/* ================================================
+   12. FOOTER
+   ================================================ */
+
+.footer {
+  background: var(--clr-brown);
+  color: rgba(247, 242, 235, 0.7);
+  padding: 56px 0 36px;
+}
+
+/* Dreispaltiges Footer-Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(247, 242, 235, 0.1);
+  margin-bottom: 28px;
+}
+
+/* Markenname im Footer */
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--clr-cream);
+  margin-bottom: 10px;
+}
+
+/* Beschreibungstext */
+.footer-text {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* Footer-Links */
+.footer-links {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
-.label{display:block;font-weight: 850; color: var(--text); font-size: 0.9rem; margin-bottom: 6px}
-input,textarea{
-  width:100%;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(28,20,14,0.14);
-  background: rgba(251,247,242,0.60);
-  outline:none;
-  color: var(--text);
-}
-textarea{min-height: 120px; resize: vertical}
-input:focus,textarea:focus{
-  border-color: rgba(180,83,9,0.45);
-  box-shadow: 0 0 0 4px rgba(180,83,9,0.12);
-}
-.fine{font-size: 0.85rem}
 
-/* Footer */
-.footer{
-  border-top: 1px solid var(--border);
-  padding: 44px 0;
-  background: rgba(255,255,255,0.55);
-}
-.footer-grid{
-  display:grid;
-  grid-template-columns: 1.2fr 0.6fr 0.6fr;
-  gap: 18px;
-  align-items: start;
-}
-.footer-brand{font-weight: 950; color: var(--text)}
-.footer-links{display:grid; gap: 8px}
-.footer-links a{
-  color: var(--text);
-  text-decoration:none;
-  font-weight: 800;
-  opacity: 0.9;
-}
-.footer-links a:hover{opacity: 1}
-.footer-note{color: var(--muted)}
-
-/* Responsive */
-@media (max-width: 980px){
-  .hero-grid, .about-grid, .hours-grid, .contact-grid{grid-template-columns: 1fr}
-  .menu-grid{grid-template-columns: 1fr}
-  .contact-cards{grid-template-columns: 1fr}
-  .footer-grid{grid-template-columns: 1fr}
-  .gallery{grid-template-columns: repeat(6, 1fr)}
-  .ph-1,.ph-2,.ph-3,.ph-4,.ph-5,.ph-6{grid-column: span 6}
+.footer-links a {
+  font-size: 0.88rem;
+  color: rgba(247, 242, 235, 0.6);
+  text-decoration: none;
+  transition: color var(--transition);
 }
 
-/* Info-only tweaks */
-.mini-info{
-  margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  border: 1px solid rgba(28,20,14,0.10);
-  background: rgba(251,247,242,0.55);
-}
-.mini-info p{
-  color: var(--muted);
-  margin-top: 6px;
-}
-.mini-info p:first-child{ margin-top: 0; }
-
-.contact-simple .actions{ display:flex; gap:12px; flex-wrap:wrap; }
-.contact-cards.simple{ grid-template-columns: repeat(3, minmax(0,1fr)); }
-
-@media (max-width: 980px){
-  .contact-cards.simple{ grid-template-columns: 1fr; }
+.footer-links a:hover {
+  color: var(--clr-cream);
 }
 
+/* Copyright-Zeile */
+.footer-note {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-note p {
+  font-size: 0.82rem;
+  color: rgba(247, 242, 235, 0.45);
+}
+
+
+/* ================================================
+   13. RESPONSIVE
+   ================================================ */
+
+
+/* ---- Tablet (max. 900px) ---- */
+@media (max-width: 900px) {
+
+  /* Weniger Sektionsabstand */
+  .section {
+    padding: 72px 0;
+  }
+
+  /* Hero: einspaltig */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Hero-Karte volle Breite */
+  .hero-card {
+    max-width: 480px;
+  }
+
+  /* Über uns: einspaltig */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Öffnungszeiten: einspaltig */
+  .hours-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Footer: zweispaltig */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+
+/* ---- Smartphone (max. 640px) ---- */
+@media (max-width: 640px) {
+
+  /* Navigation: Links ausblenden */
+  .menu a:not(.btn) {
+    display: none;
+  }
+
+  /* Hero-Überschrift kleiner */
+  .hero-text h1 {
+    font-size: 2.6rem;
+  }
+
+  /* Galerie: 2 Spalten */
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  /* Galerie-Spans zurücksetzen */
+  .ph-1,
+  .ph-6 {
+    grid-column: span 1;
+  }
+
+  /* Kontaktkarten: einspaltig */
+  .contact-cards.simple {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer: einspaltig */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Menü-Grid: einspaltig */
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,348 +1,969 @@
-/* =========================
-   Handwerker Prototype – Clean / Trust / Local
-   Info-only website
-   ========================= */
+/* ================================================
+   Musterbetrieb – Handwerk & Service – Stylesheet
+   ================================================
+   Design: Industriell & Vertrauensvoll
+   Töne: Dunkelblau, Stahlgrau, Orange-Akzent
+   Schriften: Barlow Condensed + Barlow
+   ================================================
+   1.  CSS Variablen
+   2.  Reset & Basis
+   3.  Hilfsklassen
+   4.  Buttons
+   5.  Header & Navigation
+   6.  Hero
+   7.  Leistungen
+   8.  Ablauf
+   9.  Referenzen
+   10. FAQ
+   11. Kontakt
+   12. Footer
+   13. Responsive
+   ================================================ */
 
-:root{
-  --bg:#ffffff;
-  --alt:#f4f6f9;
-  --paper:#ffffff;
 
-  --text:#0b1220;
-  --muted:#5a667a;
+/* ================================================
+   1. CSS VARIABLEN
+   ================================================ */
 
-  --accent:#1d4ed8;     /* Blau = Vertrauen */
-  --accent2:#0f766e;    /* Sekundär */
 
-  --border: rgba(15, 23, 42, 0.12);
-  --shadow: 0 18px 60px rgba(2, 6, 23, 0.12);
+:root {
+  /* Farben */
+  --clr-navy:         #0f1923;    /* Dunkelblau – Haupthintergrund */
+  --clr-navy-2:       #162030;    /* Etwas heller – Karten */
+  --clr-navy-3:       #1e2d3d;    /* Noch heller – Hover */
+  --clr-steel:        #2a3f54;    /* Stahlblau – Borders */
+  --clr-orange:       #e8630a;    /* Orange – Akzentfarbe */
+  --clr-orange-light: #f07830;    /* Helles Orange – Hover */
+  --clr-white:        #ffffff;
+  --clr-text:         #d0dce8;    /* Haupttext (hell) */
+  --clr-text-muted:   #6a8099;    /* Nebentext */
+  --clr-border:       #1e2d3d;    /* Rahmen */
 
-  --radius: 16px;
-  --container: 1120px;
+  /* Schriften */
+  --font-display: 'Barlow Condensed', Impact, sans-serif;   /* Überschriften – kraftvoll */
+  --font-body:    'Barlow', sans-serif;                      /* Fließtext – klar */
+
+  /* Abstände & Effekte */
+  --radius:     6px;
+  --radius-lg:  12px;
+  --shadow:     0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg:  0 8px 40px rgba(0, 0, 0, 0.5);
+  --transition: 0.22s ease;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: var(--bg);
-  color: var(--text);
+
+/* ================================================
+   2. RESET & BASIS
+   ================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-navy);
+  color: var(--clr-text);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ================================================
+   3. HILFSKLASSEN
+   ================================================ */
+
+/* Zentrierter Inhaltsbereich */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Standard-Sektionsabstand */
+.section {
+  padding: 96px 0;
+}
+
+/* Alternative Sektion mit etwas hellerem Hintergrund */
+.section.alt {
+  background: var(--clr-navy-2);
+}
+
+/* Überschriften-Bereich */
+.section-head {
+  margin-bottom: 52px;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--clr-white);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-head p {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  max-width: 540px;
+  line-height: 1.75;
+}
+
+
+/* ================================================
+   4. BUTTONS
+   ================================================ */
+
+/* Basis-Button */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  letter-spacing: 0.04em;
+}
+
+/* Primär – Orange ausgefüllt */
+.btn.primary {
+  background: var(--clr-orange);
+  color: var(--clr-white);
+  padding: 13px 28px;
+}
+
+.btn.primary:hover {
+  background: var(--clr-orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 99, 10, 0.35);
+}
+
+/* Ghost – transparenter Rahmen */
+.btn.ghost {
+  background: transparent;
+  color: var(--clr-text);
+  padding: 12px 28px;
+  border: 1.5px solid var(--clr-steel);
+}
+
+.btn.ghost:hover {
+  border-color: var(--clr-text-muted);
+  background: var(--clr-navy-3);
+}
+
+/* Kleiner Button – Navigation */
+.btn.small {
+  background: var(--clr-orange);
+  color: var(--clr-white);
+  padding: 8px 18px;
+  font-size: 0.82rem;
+}
+
+.btn.small:hover {
+  background: var(--clr-orange-light);
+}
+
+/* Volle Breite – für Panel-Buttons */
+.btn.full {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+
+/* ================================================
+   5. HEADER & NAVIGATION
+   ================================================ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 25, 35, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--clr-orange);
+  padding: 16px 0;
+}
+
+/* Flex-Container */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logo / Markenname */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* Dekoratives Icon – Werkzeug-Silhouette via CSS */
+.brand-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background: var(--clr-orange);
+  border-radius: var(--radius);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.brand-icon::after {
+  content: '🔧';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Navigationslinks */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+
+.menu a:hover {
+  color: var(--clr-white);
+}
+
+
+/* ================================================
+   6. HERO
+   ================================================ */
+
+.hero {
+  padding: 80px 0 100px;
+  background: var(--clr-navy);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonaler Hintergrund-Effekt */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(232, 99, 10, 0.04) 100%);
+  pointer-events: none;
+}
+
+/* Zweispaltiges Grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Kleines Label */
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-orange);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Linie vor dem Kicker */
+.kicker::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--clr-orange);
+  flex-shrink: 0;
+}
+
+/* Hauptüberschrift */
+.hero-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 700;
+  color: var(--clr-white);
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* Beschreibungstext */
+.lead {
+  font-size: 1.05rem;
+  color: var(--clr-text-muted);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+/* Button-Gruppe */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+/* Vertrauens-Indikatoren unter den Buttons */
+.trust {
+  display: flex;
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--clr-border);
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trust-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-orange);
+  line-height: 1;
+}
+
+.trust-text {
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Kontaktkarte rechts */
+.hero-panel {
+  background: var(--clr-navy-2);
+  border: 1px solid var(--clr-steel);
+  border-top: 3px solid var(--clr-orange);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-panel h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* Einzelne Informationszeile im Panel */
+.panel-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--clr-border);
+  gap: 16px;
+}
+
+.panel-row:last-of-type {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  flex-shrink: 0;
+}
+
+.value {
+  font-size: 0.9rem;
+  color: var(--clr-text);
+  text-align: right;
+}
+
+/* Hinweis-Box im Panel */
+.panel-note {
+  background: rgba(232, 99, 10, 0.08);
+  border: 1px solid rgba(232, 99, 10, 0.2);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 16px 0;
+}
+
+.panel-note p {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
   line-height: 1.6;
 }
 
-.container{max-width:var(--container);margin:0 auto;padding:0 20px}
-.section{padding:86px 0}
-.alt{background:var(--alt)}
-.muted{color:var(--muted)}
-.fine{margin-top:14px;color:var(--muted);font-size:.9rem}
-
-h1,h2,h3{letter-spacing:-0.02em}
-h1{font-size:clamp(2.2rem,4vw,3.3rem);line-height:1.05}
-h2{font-size:clamp(1.6rem,2.4vw,2.2rem);line-height:1.15}
-h3{font-size:1.05rem}
-p{color:var(--muted)}
-
-/* Header */
-.header{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(255,255,255,0.86);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+.panel-note strong {
+  color: var(--clr-orange);
 }
-.nav{
-  height: 74px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+
+/* Button-Gruppe im Panel */
+.panel-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+
+/* ================================================
+   7. LEISTUNGEN
+   ================================================ */
+
+/* 3-spaltiges Karten-Grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+/* Einzelne Leistungs-Karte */
+.card {
+  background: var(--clr-navy-2);
+  border: 1px solid var(--clr-steel);
+  border-top: 3px solid var(--clr-orange);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  border-color: var(--clr-orange);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Karten-Icon (Platzhalter) */
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(232, 99, 10, 0.1);
+  border: 1px solid rgba(232, 99, 10, 0.25);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.card-icon::after {
+  content: '⚙';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--clr-orange);
+}
+
+/* Alternative Icon-Variante */
+.card-icon.alt::after {
+  content: '🔨';
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card > p {
+  font-size: 0.92rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Leistungsliste */
+.card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card ul li {
+  font-size: 0.88rem;
+  color: var(--clr-text);
+  padding-left: 18px;
+  position: relative;
+}
+
+/* Orangener Strich vor Listenpunkten */
+.card ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 2px;
+  background: var(--clr-orange);
+}
+
+/* Info-Banner unter den Karten */
+.info-band {
+  background: var(--clr-navy-2);
+  border: 1px solid var(--clr-steel);
+  border-left: 4px solid var(--clr-orange);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.info-band p {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+}
+
+.info-band strong {
+  color: var(--clr-text);
+}
+
+
+/* ================================================
+   8. ABLAUF
+   ================================================ */
+
+/* Vertikale Schritt-Liste */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 680px;
+  position: relative;
+}
+
+/* Vertikale Verbindungslinie */
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 56px;
+  bottom: 0;
+  width: 2px;
+  background: var(--clr-border);
+}
+
+/* Einzelner Schritt */
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 0 0 40px 0;
+  position: relative;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* Schrittnummer im Kreis */
+.step-num {
+  width: 56px;
+  height: 56px;
+  background: var(--clr-orange);
+  color: var(--clr-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 4px var(--clr-navy-2);
+}
+
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+
+.step p {
+  font-size: 0.92rem;
+  color: var(--clr-text-muted);
+  line-height: 1.75;
+}
+
+
+/* ================================================
+   9. REFERENZEN
+   ================================================ */
+
+/* Referenzen als vertikale Liste */
+.refs {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
-.brand{
-  display:flex;align-items:center;gap:10px;
-  text-decoration:none;color:var(--text);
-}
-.brand-icon{
-  width: 12px; height: 12px; border-radius: 4px;
-  background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(29,78,216,0.14);
-}
-.brand-name{
-  font-weight: 950;
-  letter-spacing: -0.02em;
+
+/* Einzelne Referenz-Zeile */
+.ref {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--clr-navy-2);
+  border: 1px solid var(--clr-steel);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  transition: border-color var(--transition), transform var(--transition);
 }
 
-/* Menu */
-.menu{
-  display:flex; align-items:center; gap: 16px;
-  flex-wrap:wrap;
+.ref:hover {
+  border-color: var(--clr-orange);
+  transform: translateX(4px);
 }
-.menu a{
-  text-decoration:none;
-  color: var(--text);
-  font-weight: 800;
-  font-size: .95rem;
-  opacity: .92;
-}
-.menu a:hover{opacity:1}
 
-/* Buttons */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 12px 18px;
-  border-radius: 999px;
-  font-weight: 900;
-  text-decoration:none;
-  border: 1px solid transparent;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
-}
-.btn:hover{transform: translateY(-1px)}
-.btn.small{padding: 10px 14px}
-.btn.primary{
-  background: var(--text);
-  color: #fff;
-  box-shadow: 0 10px 28px rgba(2,6,23,0.14);
-}
-.btn.ghost{
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
-}
-.btn.full{width:100%}
-
-/* Hero */
-.hero{
-  padding: 110px 0 94px;
-  background:
-    radial-gradient(900px 520px at 18% 12%, rgba(29,78,216,0.16), transparent 60%),
-    radial-gradient(700px 480px at 88% 18%, rgba(15,118,110,0.12), transparent 60%),
-    linear-gradient(180deg, #fff 0%, #fff 55%, var(--alt) 100%);
-  border-bottom: 1px solid var(--border);
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.35fr 0.95fr;
-  gap: 18px;
-  align-items: start;
-}
-.kicker{
-  display:inline-flex;
-  font-weight: 950;
-  font-size: 0.82rem;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.65);
-  padding: 8px 12px;
-  border-radius: 999px;
-  width: fit-content;
-}
-.lead{margin-top: 12px; font-size: 1.06rem}
-.hero-actions{margin-top: 22px; display:flex; gap: 12px; flex-wrap:wrap}
-
-.trust{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 12px;
-}
-.trust-item{
-  border: 1px solid rgba(15,23,42,0.10);
-  background: rgba(255,255,255,0.70);
-  border-radius: 14px;
-  padding: 12px;
-}
-.trust-title{font-weight: 950; color: var(--text)}
-.trust-text{font-size: .9rem}
-
-/* Hero panel */
-.hero-panel{
-  background: rgba(255,255,255,0.85);
-  border: 1px solid var(--border);
+/* Referenz-Foto Platzhalter */
+.ref-photo {
+  width: 80px;
+  height: 80px;
   border-radius: var(--radius);
-  padding: 18px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #1e2d3d 0%, #2a3f54 100%);
+  border: 1px solid var(--clr-steel);
+  position: relative;
+}
+
+/* Werkzeug-Icon im Platzhalter */
+.ref-photo::after {
+  content: '🏗';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  opacity: 0.6;
+}
+
+/* Alternative Farbe */
+.ref-photo.alt {
+  background: linear-gradient(135deg, #162030 0%, #1e2d3d 100%);
+}
+
+.ref-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.ref-text {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+}
+
+
+/* ================================================
+   10. FAQ
+   ================================================ */
+
+/* FAQ-Liste */
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+}
+
+/* Einzelnes FAQ-Element (native HTML details) */
+.faq-item {
+  background: var(--clr-navy-2);
+  border: 1px solid var(--clr-steel);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.faq-item:hover {
+  border-color: var(--clr-orange);
+}
+
+.faq-item[open] {
+  border-color: var(--clr-orange);
+}
+
+/* Klickbare Zusammenfassung */
+.faq-item summary {
+  padding: 20px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background var(--transition);
+}
+
+.faq-item summary:hover {
+  background: var(--clr-navy-3);
+}
+
+/* Standard-Pfeil entfernen */
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Eigener Pfeil */
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--clr-orange);
+  font-weight: 300;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+/* Aufklappbarer Inhalt */
+.faq-item p {
+  padding: 0 24px 20px;
+  font-size: 0.92rem;
+  color: var(--clr-text-muted);
+  line-height: 1.8;
+  border-top: 1px solid var(--clr-border);
+  padding-top: 16px;
+}
+
+
+/* ================================================
+   11. KONTAKT
+   ================================================ */
+
+/* 3-spaltiges Kontakt-Karten-Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* Einzelne Kontakt-Karte */
+.contact-card {
+  background: var(--clr-navy-2);
+  border: 1px solid var(--clr-steel);
+  border-top: 3px solid var(--clr-orange);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
   box-shadow: var(--shadow);
 }
-.hero-panel h3{margin-bottom: 10px}
-.panel-row{
-  display:flex;
-  justify-content:space-between;
-  gap: 12px;
-  padding: 12px 0;
-  border-top: 1px solid rgba(15,23,42,0.10);
-}
-.panel-row:first-of-type{border-top:0}
-.label{font-weight: 900; color: var(--text)}
-.value{color: var(--muted); font-weight: 800}
-.panel-note{
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(29,78,216,0.20);
-  background: rgba(29,78,216,0.07);
-}
-.panel-note p{color: var(--muted)}
-.panel-actions{margin-top: 14px; display:grid; gap: 10px}
 
-/* Section head */
-.section-head{max-width:72ch; display:grid; gap:10px}
-
-/* Cards (Leistungen) */
-.cards{
-  margin-top: 28px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 16px;
-}
-.card{
-  background: rgba(255,255,255,0.92);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: 0 1px 0 rgba(2,6,23,0.03);
-}
-.card-icon{
-  width: 36px; height: 36px;
-  border-radius: 12px;
-  background: rgba(29,78,216,0.16);
-  border: 1px solid rgba(29,78,216,0.22);
-  margin-bottom: 12px;
-}
-.card-icon.alt{
-  background: rgba(15,118,110,0.14);
-  border: 1px solid rgba(15,118,110,0.22);
-}
-.card ul{
-  margin-top: 12px;
-  padding-left: 18px;
-  color: var(--muted);
-}
-.card li{margin: 6px 0}
-
-.info-band{
-  margin-top: 16px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(15,23,42,0.10);
-  background: rgba(15,23,42,0.04);
+/* Karten-Titel */
+.contact-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-orange);
+  margin-bottom: 8px;
 }
 
-/* Steps */
-.steps{
-  margin-top: 22px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+/* Karten-Text */
+.contact-text {
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  line-height: 1.5;
+}
+
+/* Button-Gruppe */
+.contact-actions {
+  display: flex;
   gap: 14px;
-}
-.step{
-  display:flex;
-  gap: 12px;
-  padding: 16px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.85);
-}
-.step-num{
-  width: 34px; height: 34px;
-  border-radius: 12px;
-  display:flex; align-items:center; justify-content:center;
-  font-weight: 950;
-  color: var(--text);
-  background: rgba(29,78,216,0.16);
-  border: 1px solid rgba(29,78,216,0.22);
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
-/* Referenzen */
-.refs{
-  margin-top: 22px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 14px;
-}
-.ref{
-  display:flex;
-  gap: 12px;
-  align-items:flex-start;
-  padding: 16px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.92);
-}
-.ref-photo{
-  width: 52px; height: 52px;
-  border-radius: 16px;
-  border: 1px solid rgba(15,23,42,0.10);
-  background:
-    radial-gradient(22px 22px at 30% 30%, rgba(29,78,216,0.25), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,0.9), rgba(244,246,249,0.7));
-}
-.ref-photo.alt{
-  background:
-    radial-gradient(22px 22px at 30% 30%, rgba(15,118,110,0.22), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,0.9), rgba(244,246,249,0.7));
-}
-.ref-title{font-weight: 950; color: var(--text)}
-.ref-text{font-size: .95rem}
-
-/* FAQ */
-.faq{
-  margin-top: 18px;
-  display:grid;
-  gap: 12px;
-}
-.faq-item{
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.85);
-}
-.faq-item summary{
-  cursor:pointer;
-  font-weight: 950;
-  color: var(--text);
-}
-.faq-item p{margin-top: 10px}
-
-/* Kontakt */
-.contact-grid{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 12px;
-}
-.contact-card{
-  border: 1px solid rgba(15,23,42,0.10);
-  background: rgba(255,255,255,0.92);
-  border-radius: 16px;
-  padding: 14px;
-}
-.contact-title{font-weight: 950; color: var(--text); margin-bottom: 6px}
-.contact-text{font-size: .95rem}
-
-.contact-actions{
-  margin-top: 16px;
-  display:flex;
-  gap: 10px;
-  flex-wrap:wrap;
+/* Kleiner Hinweistext unter den Buttons */
+.fine {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  font-style: italic;
 }
 
-/* Footer */
-.footer{
-  border-top: 1px solid var(--border);
-  padding: 34px 0;
-  background: #fff;
-}
-.footer-grid{
-  display:flex;
-  justify-content:space-between;
-  gap: 12px;
-  flex-wrap:wrap;
+
+/* ================================================
+   12. FOOTER
+   ================================================ */
+
+.footer {
+  background: var(--clr-navy-2);
+  border-top: 2px solid var(--clr-orange);
+  padding: 24px 0;
 }
 
-/* Responsive */
-@media (max-width: 980px){
-  .hero-grid{grid-template-columns:1fr}
-  .trust{grid-template-columns:1fr}
-  .cards,.steps,.refs,.contact-grid{grid-template-columns:1fr}
+/* Zweispaltiges Footer-Grid */
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-grid p {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
+
+/* Gedimmter Text für Impressum etc. */
+.muted {
+  color: var(--clr-text-muted);
+  font-size: 0.85rem;
+}
+
+
+/* ================================================
+   13. RESPONSIVE
+   ================================================ */
+
+
+/* ---- Tablet (max. 900px) ---- */
+@media (max-width: 900px) {
+
+  /* Weniger Sektionsabstand */
+  .section {
+    padding: 72px 0;
+  }
+
+  /* Hero: einspaltig */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Panel volle Breite */
+  .hero-panel {
+    max-width: 480px;
+  }
+
+  /* Karten: zweispaltig */
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Kontakt-Grid: einspaltig */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ---- Smartphone (max. 640px) ---- */
+@media (max-width: 640px) {
+
+  /* Navigation: Links ausblenden */
+  .menu a:not(.btn) {
+    display: none;
+  }
+
+  /* Hero-Überschrift kleiner */
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  /* Trust-Items umbrechen */
+  .trust {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* Leistungs-Karten: einspaltig */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Referenzen: kompakter */
+  .ref {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Verbindungslinie ausblenden */
+  .steps::before {
+    display: none;
+  }
 }
