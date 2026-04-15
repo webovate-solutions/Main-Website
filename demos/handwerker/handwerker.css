@@ -1,23 +1,9 @@
 /* ================================================
-   Musterbetrieb – Handwerk & Service – Stylesheet
+   Musterbetrieb – Handwerk & Service – Stylesheet v2
    ================================================
-   Design: Industriell & Vertrauensvoll
-   Töne: Dunkelblau, Stahlgrau, Orange-Akzent
+   Design: Industrial & Vertrauensvoll — Bold & Klar
+   Farben: Tiefblau, Stahl, Orange-Akzent
    Schriften: Barlow Condensed + Barlow
-   ================================================
-   1.  CSS Variablen
-   2.  Reset & Basis
-   3.  Hilfsklassen
-   4.  Buttons
-   5.  Header & Navigation
-   6.  Hero
-   7.  Leistungen
-   8.  Ablauf
-   9.  Referenzen
-   10. FAQ
-   11. Kontakt
-   12. Footer
-   13. Responsive
    ================================================ */
 
 
@@ -25,30 +11,31 @@
    1. CSS VARIABLEN
    ================================================ */
 
-
 :root {
-  /* Farben */
-  --clr-navy:         #0f1923;    /* Dunkelblau – Haupthintergrund */
-  --clr-navy-2:       #162030;    /* Etwas heller – Karten */
-  --clr-navy-3:       #1e2d3d;    /* Noch heller – Hover */
-  --clr-steel:        #2a3f54;    /* Stahlblau – Borders */
-  --clr-orange:       #e8630a;    /* Orange – Akzentfarbe */
-  --clr-orange-light: #f07830;    /* Helles Orange – Hover */
+  --clr-navy:         #0a1520;
+  --clr-navy-2:       #101e2e;
+  --clr-navy-3:       #162438;
+  --clr-navy-4:       #1c2d44;
+  --clr-steel:        #243548;
+  --clr-steel-light:  #2e4460;
+  --clr-orange:       #e8630a;
+  --clr-orange-light: #f07830;
+  --clr-orange-glow:  rgba(232, 99, 10, 0.12);
   --clr-white:        #ffffff;
-  --clr-text:         #d0dce8;    /* Haupttext (hell) */
-  --clr-text-muted:   #6a8099;    /* Nebentext */
-  --clr-border:       #1e2d3d;    /* Rahmen */
+  --clr-text:         #ccd8e8;
+  --clr-text-muted:   #5e7a99;
+  --clr-border:       #1c2d44;
+  --clr-border-light: #243548;
 
-  /* Schriften */
-  --font-display: 'Barlow Condensed', Impact, sans-serif;   /* Überschriften – kraftvoll */
-  --font-body:    'Barlow', sans-serif;                      /* Fließtext – klar */
+  --font-display: 'Barlow Condensed', Impact, sans-serif;
+  --font-body:    'Barlow', sans-serif;
 
-  /* Abstände & Effekte */
-  --radius:     6px;
-  --radius-lg:  12px;
-  --shadow:     0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg:  0 8px 40px rgba(0, 0, 0, 0.5);
-  --transition: 0.22s ease;
+  --radius:     8px;
+  --radius-lg:  16px;
+  --shadow:     0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg:  0 12px 48px rgba(0, 0, 0, 0.55);
+  --shadow-orange: 0 6px 24px rgba(232, 99, 10, 0.3);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -56,17 +43,13 @@
    2. RESET & BASIS
    ================================================ */
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
@@ -77,54 +60,47 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+img { max-width: 100%; display: block; }
 
 
 /* ================================================
    3. HILFSKLASSEN
    ================================================ */
 
-/* Zentrierter Inhaltsbereich */
 .container {
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 32px;
 }
 
-/* Standard-Sektionsabstand */
 .section {
-  padding: 96px 0;
+  padding: 110px 0;
 }
 
-/* Alternative Sektion mit etwas hellerem Hintergrund */
 .section.alt {
   background: var(--clr-navy-2);
 }
 
-/* Überschriften-Bereich */
 .section-head {
-  margin-bottom: 52px;
+  margin-bottom: 56px;
 }
 
 .section-head h2 {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
   font-weight: 700;
   color: var(--clr-white);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  line-height: 1.0;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section-head p {
   font-size: 1rem;
   color: var(--clr-text-muted);
-  max-width: 540px;
-  line-height: 1.75;
+  max-width: 560px;
+  line-height: 1.8;
 }
 
 
@@ -132,9 +108,10 @@ img {
    4. BUTTONS
    ================================================ */
 
-/* Basis-Button */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 600;
@@ -146,37 +123,35 @@ img {
   letter-spacing: 0.04em;
 }
 
-/* Primär – Orange ausgefüllt */
 .btn.primary {
   background: var(--clr-orange);
   color: var(--clr-white);
-  padding: 13px 28px;
+  padding: 14px 30px;
 }
 
 .btn.primary:hover {
   background: var(--clr-orange-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232, 99, 10, 0.35);
+  box-shadow: var(--shadow-orange);
 }
 
-/* Ghost – transparenter Rahmen */
 .btn.ghost {
   background: transparent;
   color: var(--clr-text);
-  padding: 12px 28px;
-  border: 1.5px solid var(--clr-steel);
+  padding: 13px 30px;
+  border: 1.5px solid var(--clr-steel-light);
 }
 
 .btn.ghost:hover {
   border-color: var(--clr-text-muted);
   background: var(--clr-navy-3);
+  color: var(--clr-white);
 }
 
-/* Kleiner Button – Navigation */
 .btn.small {
   background: var(--clr-orange);
   color: var(--clr-white);
-  padding: 8px 18px;
+  padding: 9px 20px;
   font-size: 0.82rem;
 }
 
@@ -184,11 +159,11 @@ img {
   background: var(--clr-orange-light);
 }
 
-/* Volle Breite – für Panel-Buttons */
 .btn.full {
-  display: block;
+  display: flex;
   text-align: center;
   width: 100%;
+  justify-content: center;
 }
 
 
@@ -200,13 +175,14 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(15, 25, 35, 0.96);
-  backdrop-filter: blur(12px);
+  background: rgba(10, 21, 32, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 2px solid var(--clr-orange);
   padding: 16px 0;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Flex-Container */
 .nav {
   display: flex;
   align-items: center;
@@ -214,23 +190,22 @@ img {
   gap: 24px;
 }
 
-/* Logo / Markenname */
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
   text-decoration: none;
 }
 
-/* Dekoratives Icon – Werkzeug-Silhouette via CSS */
 .brand-icon {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   background: var(--clr-orange);
   border-radius: var(--radius);
   position: relative;
   flex-shrink: 0;
+  box-shadow: 0 3px 12px rgba(232, 99, 10, 0.35);
 }
 
 .brand-icon::after {
@@ -245,26 +220,25 @@ img {
 
 .brand-name {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--clr-white);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* Navigationslinks */
 .menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 34px;
 }
 
 .menu a {
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.84rem;
+  font-weight: 600;
   color: var(--clr-text-muted);
   text-decoration: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: color var(--transition);
 }
@@ -279,153 +253,156 @@ img {
    ================================================ */
 
 .hero {
-  padding: 80px 0 100px;
+  padding: 90px 0 110px;
   background: var(--clr-navy);
   position: relative;
   overflow: hidden;
 }
 
-/* Diagonaler Hintergrund-Effekt */
-.hero::after {
+.hero::before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 50%;
   height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba(232, 99, 10, 0.04) 100%);
+  background: linear-gradient(135deg, transparent 0%, rgba(232, 99, 10, 0.03) 100%);
   pointer-events: none;
 }
 
-/* Zweispaltiges Grid */
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 64px;
-  align-items: start;
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232, 99, 10, 0.05) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-/* Kleines Label */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 72px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
 .kicker {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--clr-orange);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Linie vor dem Kicker */
 .kicker::before {
   content: '';
   display: block;
-  width: 32px;
+  width: 28px;
   height: 2px;
   background: var(--clr-orange);
   flex-shrink: 0;
 }
 
-/* Hauptüberschrift */
 .hero-text h1 {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
   font-weight: 700;
   color: var(--clr-white);
   line-height: 1.0;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-/* Beschreibungstext */
 .lead {
   font-size: 1.05rem;
   color: var(--clr-text-muted);
   max-width: 480px;
-  line-height: 1.8;
-  margin-bottom: 36px;
+  line-height: 1.85;
+  margin-bottom: 40px;
 }
 
-/* Button-Gruppe */
 .hero-actions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
-/* Vertrauens-Indikatoren unter den Buttons */
 .trust {
   display: flex;
-  gap: 32px;
-  padding-top: 32px;
+  gap: 36px;
+  padding-top: 36px;
   border-top: 1px solid var(--clr-border);
 }
 
 .trust-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .trust-title {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--clr-orange);
   line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 .trust-text {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--clr-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 /* Kontaktkarte rechts */
 .hero-panel {
   background: var(--clr-navy-2);
-  border: 1px solid var(--clr-steel);
+  border: 1px solid var(--clr-steel-light);
   border-top: 3px solid var(--clr-orange);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 30px;
   box-shadow: var(--shadow-lg);
 }
 
 .hero-panel h3 {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--clr-white);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
   border-bottom: 1px solid var(--clr-border);
 }
 
-/* Einzelne Informationszeile im Panel */
 .panel-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--clr-border);
   gap: 16px;
 }
 
-.panel-row:last-of-type {
-  border-bottom: none;
-}
+.panel-row:last-of-type { border-bottom: none; }
 
 .label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--clr-text-muted);
   flex-shrink: 0;
@@ -437,26 +414,22 @@ img {
   text-align: right;
 }
 
-/* Hinweis-Box im Panel */
 .panel-note {
-  background: rgba(232, 99, 10, 0.08);
-  border: 1px solid rgba(232, 99, 10, 0.2);
+  background: var(--clr-orange-glow);
+  border: 1px solid rgba(232, 99, 10, 0.18);
   border-radius: var(--radius);
-  padding: 12px 14px;
-  margin: 16px 0;
+  padding: 13px 16px;
+  margin: 18px 0;
 }
 
 .panel-note p {
   font-size: 0.82rem;
   color: var(--clr-text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.panel-note strong {
-  color: var(--clr-orange);
-}
+.panel-note strong { color: var(--clr-orange); }
 
-/* Button-Gruppe im Panel */
 .panel-actions {
   display: flex;
   flex-direction: column;
@@ -469,39 +442,64 @@ img {
    7. LEISTUNGEN
    ================================================ */
 
-/* 3-spaltiges Karten-Grid */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
   margin-bottom: 28px;
 }
 
-/* Einzelne Leistungs-Karte */
 .card {
   background: var(--clr-navy-2);
   border: 1px solid var(--clr-steel);
-  border-top: 3px solid var(--clr-orange);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 36px 30px;
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--clr-orange), var(--clr-orange-light));
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(232, 99, 10, 0.05) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .card:hover {
-  border-color: var(--clr-orange);
-  transform: translateY(-4px);
+  border-color: rgba(232, 99, 10, 0.4);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
 
-/* Karten-Icon (Platzhalter) */
 .card-icon {
-  width: 48px;
-  height: 48px;
-  background: rgba(232, 99, 10, 0.1);
-  border: 1px solid rgba(232, 99, 10, 0.25);
+  width: 52px;
+  height: 52px;
+  background: var(--clr-orange-glow);
+  border: 1px solid rgba(232, 99, 10, 0.22);
   border-radius: var(--radius);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   position: relative;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.card:hover .card-icon {
+  background: rgba(232, 99, 10, 0.18);
+  box-shadow: 0 0 20px rgba(232, 99, 10, 0.1);
 }
 
 .card-icon::after {
@@ -511,18 +509,15 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--clr-orange);
 }
 
-/* Alternative Icon-Variante */
-.card-icon.alt::after {
-  content: '🔨';
-}
+.card-icon.alt::after { content: '🔨'; }
 
 .card h3 {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--clr-white);
   letter-spacing: 0.04em;
@@ -531,46 +526,43 @@ img {
 }
 
 .card > p {
-  font-size: 0.92rem;
+  font-size: 0.91rem;
   color: var(--clr-text-muted);
-  line-height: 1.7;
-  margin-bottom: 16px;
+  line-height: 1.75;
+  margin-bottom: 18px;
 }
 
-/* Leistungsliste */
 .card ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .card ul li {
   font-size: 0.88rem;
   color: var(--clr-text);
-  padding-left: 18px;
+  padding-left: 20px;
   position: relative;
 }
 
-/* Orangener Strich vor Listenpunkten */
 .card ul li::before {
   content: '';
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 8px;
+  width: 10px;
   height: 2px;
   background: var(--clr-orange);
 }
 
-/* Info-Banner unter den Karten */
 .info-band {
   background: var(--clr-navy-2);
   border: 1px solid var(--clr-steel);
   border-left: 4px solid var(--clr-orange);
   border-radius: var(--radius);
-  padding: 16px 20px;
+  padding: 18px 22px;
 }
 
 .info-band p {
@@ -578,49 +570,41 @@ img {
   color: var(--clr-text-muted);
 }
 
-.info-band strong {
-  color: var(--clr-text);
-}
+.info-band strong { color: var(--clr-text); }
 
 
 /* ================================================
    8. ABLAUF
    ================================================ */
 
-/* Vertikale Schritt-Liste */
 .steps {
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-width: 680px;
+  max-width: 700px;
   position: relative;
 }
 
-/* Vertikale Verbindungslinie */
 .steps::before {
   content: '';
   position: absolute;
-  left: 28px;
+  left: 27px;
   top: 56px;
   bottom: 0;
   width: 2px;
-  background: var(--clr-border);
+  background: linear-gradient(to bottom, var(--clr-orange), rgba(232, 99, 10, 0.15));
 }
 
-/* Einzelner Schritt */
 .step {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
-  padding: 0 0 40px 0;
+  gap: 26px;
+  padding: 0 0 44px 0;
   position: relative;
 }
 
-.step:last-child {
-  padding-bottom: 0;
-}
+.step:last-child { padding-bottom: 0; }
 
-/* Schrittnummer im Kreis */
 .step-num {
   width: 56px;
   height: 56px;
@@ -631,29 +615,29 @@ img {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 4px var(--clr-navy-2);
+  box-shadow: 0 0 0 4px var(--clr-navy-2), var(--shadow-orange);
 }
 
 .step h3 {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--clr-white);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
   margin-top: 12px;
 }
 
 .step p {
   font-size: 0.92rem;
   color: var(--clr-text-muted);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 
@@ -661,42 +645,47 @@ img {
    9. REFERENZEN
    ================================================ */
 
-/* Referenzen als vertikale Liste */
 .refs {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* Einzelne Referenz-Zeile */
 .ref {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   background: var(--clr-navy-2);
   border: 1px solid var(--clr-steel);
   border-radius: var(--radius-lg);
   padding: 24px 28px;
-  transition: border-color var(--transition), transform var(--transition);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .ref:hover {
-  border-color: var(--clr-orange);
-  transform: translateX(4px);
+  border-color: rgba(232, 99, 10, 0.4);
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
 }
 
-/* Referenz-Foto Platzhalter */
 .ref-photo {
-  width: 80px;
-  height: 80px;
+  width: 84px;
+  height: 84px;
   border-radius: var(--radius);
   flex-shrink: 0;
-  background: linear-gradient(135deg, #1e2d3d 0%, #2a3f54 100%);
+  background: linear-gradient(145deg, #1c2d44 0%, #243548 100%);
   border: 1px solid var(--clr-steel);
   position: relative;
+  overflow: hidden;
 }
 
-/* Werkzeug-Icon im Platzhalter */
+.ref-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(232, 99, 10, 0.08) 0%, transparent 100%);
+}
+
 .ref-photo::after {
   content: '🏗';
   position: absolute;
@@ -704,18 +693,17 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   opacity: 0.6;
 }
 
-/* Alternative Farbe */
 .ref-photo.alt {
-  background: linear-gradient(135deg, #162030 0%, #1e2d3d 100%);
+  background: linear-gradient(145deg, #101e2e 0%, #1c2d44 100%);
 }
 
 .ref-title {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--clr-white);
   letter-spacing: 0.04em;
@@ -726,7 +714,7 @@ img {
 .ref-text {
   font-size: 0.9rem;
   color: var(--clr-text-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 
@@ -734,15 +722,13 @@ img {
    10. FAQ
    ================================================ */
 
-/* FAQ-Liste */
 .faq {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-width: 720px;
+  max-width: 740px;
 }
 
-/* Einzelnes FAQ-Element (native HTML details) */
 .faq-item {
   background: var(--clr-navy-2);
   border: 1px solid var(--clr-steel);
@@ -751,17 +737,11 @@ img {
   transition: border-color var(--transition);
 }
 
-.faq-item:hover {
-  border-color: var(--clr-orange);
-}
+.faq-item:hover { border-color: rgba(232, 99, 10, 0.3); }
+.faq-item[open] { border-color: var(--clr-orange); }
 
-.faq-item[open] {
-  border-color: var(--clr-orange);
-}
-
-/* Klickbare Zusammenfassung */
 .faq-item summary {
-  padding: 20px 24px;
+  padding: 22px 26px;
   font-size: 1rem;
   font-weight: 600;
   color: var(--clr-white);
@@ -771,39 +751,30 @@ img {
   justify-content: space-between;
   align-items: center;
   transition: background var(--transition);
+  gap: 16px;
 }
 
-.faq-item summary:hover {
-  background: var(--clr-navy-3);
-}
+.faq-item summary:hover { background: var(--clr-navy-3); }
+.faq-item summary::-webkit-details-marker { display: none; }
 
-/* Standard-Pfeil entfernen */
-.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Eigener Pfeil */
 .faq-item summary::after {
   content: '+';
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--clr-orange);
   font-weight: 300;
   transition: transform var(--transition);
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.faq-item[open] summary::after {
-  transform: rotate(45deg);
-}
+.faq-item[open] summary::after { transform: rotate(45deg); }
 
-/* Aufklappbarer Inhalt */
 .faq-item p {
-  padding: 0 24px 20px;
+  padding: 18px 26px 22px;
   font-size: 0.92rem;
   color: var(--clr-text-muted);
-  line-height: 1.8;
+  line-height: 1.85;
   border-top: 1px solid var(--clr-border);
-  padding-top: 16px;
 }
 
 
@@ -811,55 +782,50 @@ img {
    11. KONTAKT
    ================================================ */
 
-/* 3-spaltiges Kontakt-Karten-Grid */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 36px;
 }
 
-/* Einzelne Kontakt-Karte */
 .contact-card {
   background: var(--clr-navy-2);
   border: 1px solid var(--clr-steel);
   border-top: 3px solid var(--clr-orange);
   border-radius: var(--radius-lg);
-  padding: 24px 20px;
-  transition: transform var(--transition), box-shadow var(--transition);
+  padding: 26px 22px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .contact-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow);
+  border-color: rgba(232, 99, 10, 0.5);
 }
 
-/* Karten-Titel */
 .contact-title {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--clr-orange);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-/* Karten-Text */
 .contact-text {
   font-size: 0.95rem;
   color: var(--clr-text);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-/* Button-Gruppe */
 .contact-actions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
-/* Kleiner Hinweistext unter den Buttons */
 .fine {
   font-size: 0.82rem;
   color: var(--clr-text-muted);
@@ -874,10 +840,10 @@ img {
 .footer {
   background: var(--clr-navy-2);
   border-top: 2px solid var(--clr-orange);
-  padding: 24px 0;
+  padding: 26px 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Zweispaltiges Footer-Grid */
 .footer-grid {
   display: flex;
   justify-content: space-between;
@@ -889,7 +855,6 @@ img {
   color: var(--clr-text-muted);
 }
 
-/* Gedimmter Text für Impressum etc. */
 .muted {
   color: var(--clr-text-muted);
   font-size: 0.85rem;
@@ -900,70 +865,24 @@ img {
    13. RESPONSIVE
    ================================================ */
 
+@media (max-width: 960px) {
+  .section { padding: 80px 0; }
 
-/* ---- Tablet (max. 900px) ---- */
-@media (max-width: 900px) {
-
-  /* Weniger Sektionsabstand */
-  .section {
-    padding: 72px 0;
-  }
-
-  /* Hero: einspaltig */
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  /* Panel volle Breite */
-  .hero-panel {
-    max-width: 480px;
-  }
-
-  /* Karten: zweispaltig */
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* Kontakt-Grid: einspaltig */
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
+  .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+  .hero-panel { max-width: 480px; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
 }
 
-
-/* ---- Smartphone (max. 640px) ---- */
 @media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .section { padding: 64px 0; }
 
-  /* Navigation: Links ausblenden */
-  .menu a:not(.btn) {
-    display: none;
-  }
+  .menu a:not(.btn) { display: none; }
+  .hero-text h1 { font-size: 3.2rem; }
+  .trust { gap: 22px; flex-wrap: wrap; }
+  .cards { grid-template-columns: 1fr; }
 
-  /* Hero-Überschrift kleiner */
-  .hero-text h1 {
-    font-size: 3rem;
-  }
-
-  /* Trust-Items umbrechen */
-  .trust {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  /* Leistungs-Karten: einspaltig */
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  /* Referenzen: kompakter */
-  .ref {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  /* Verbindungslinie ausblenden */
-  .steps::before {
-    display: none;
-  }
+  .ref { flex-direction: column; align-items: flex-start; }
+  .steps::before { display: none; }
 }

@@ -1,23 +1,9 @@
 /* ================================================
-   Café Aurora – Stylesheet
+   Café Aurora – Stylesheet v2
    ================================================
-   Design: Warm & Editorial
-   Töne: Creme, Terrakotta, Dunkelbraun
+   Design: Warm & Editorial — Magazin-Stil
+   Farben: Elfenbein, Espresso, Terrakotta
    Schriften: Cormorant Garamond + Outfit
-   ================================================
-   1.  CSS Variablen
-   2.  Reset & Basis
-   3.  Hilfsklassen
-   4.  Buttons
-   5.  Header & Navigation
-   6.  Hero
-   7.  Menü-Sektion
-   8.  Über uns
-   9.  Galerie
-   10. Öffnungszeiten
-   11. Kontakt
-   12. Footer
-   13. Responsive
    ================================================ */
 
 
@@ -25,29 +11,28 @@
    1. CSS VARIABLEN
    ================================================ */
 
-
 :root {
-  /* Farben */
-  --clr-cream:        #f7f2eb;    /* Haupthintergrund – warmes Creme */
-  --clr-cream-dark:   #ede5d8;    /* Karten & Sektionen */
-  --clr-terra:        #c4622d;    /* Terrakotta – Akzentfarbe */
-  --clr-terra-light:  #d4794a;    /* Helleres Terrakotta – Hover */
-  --clr-brown:        #2c1a0e;    /* Dunkelbraun – Haupttext */
-  --clr-brown-mid:    #6b4226;    /* Mittleres Braun – Nebentext */
-  --clr-brown-light:  #a07850;    /* Helles Braun – Muted Text */
+  --clr-ivory:        #faf7f1;
+  --clr-ivory-dark:   #f0e9dc;
+  --clr-ivory-mid:    #e8ddd0;
+  --clr-espresso:     #1e1108;
+  --clr-brown:        #2e1a0a;
+  --clr-brown-mid:    #6b3d1e;
+  --clr-brown-light:  #9c6840;
+  --clr-terra:        #bf5a25;
+  --clr-terra-light:  #d07040;
   --clr-white:        #ffffff;
-  --clr-border:       #ddd0bc;    /* Rahmenfarbe */
+  --clr-border:       #ddd0bc;
+  --clr-border-light: #ede5d8;
 
-  /* Schriften */
-  --font-display: 'Cormorant Garamond', Georgia, serif;   /* Überschriften – elegant */
-  --font-body:    'Outfit', sans-serif;                    /* Fließtext – modern */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Outfit', sans-serif;
 
-  /* Abstände & Effekte */
-  --radius:     8px;
-  --radius-lg:  16px;
-  --shadow:     0 4px 20px rgba(44, 26, 14, 0.08);
-  --shadow-lg:  0 8px 40px rgba(44, 26, 14, 0.14);
-  --transition: 0.28s ease;
+  --radius:     10px;
+  --radius-lg:  20px;
+  --shadow:     0 2px 20px rgba(30, 17, 8, 0.07);
+  --shadow-lg:  0 8px 40px rgba(30, 17, 8, 0.13);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -55,66 +40,55 @@
    2. RESET & BASIS
    ================================================ */
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--clr-cream);
+  background: var(--clr-ivory);
   color: var(--clr-brown);
   font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+img { max-width: 100%; display: block; }
 
 
 /* ================================================
    3. HILFSKLASSEN
    ================================================ */
 
-/* Zentrierter Inhaltsbereich */
 .container {
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 32px;
 }
 
-/* Standard-Sektionsabstand */
 .section {
-  padding: 100px 0;
+  padding: 110px 0;
 }
 
-/* Sektionen mit leicht anderem Hintergrund */
 .section.soft {
-  background: var(--clr-cream-dark);
+  background: var(--clr-ivory-dark);
 }
 
-/* Überschriften-Bereich einer Sektion */
 .section-head {
-  margin-bottom: 56px;
+  margin-bottom: 60px;
 }
 
 .section-head h2 {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   font-weight: 300;
   color: var(--clr-brown);
-  line-height: 1.15;
-  margin-bottom: 12px;
+  line-height: 1.1;
+  margin-bottom: 14px;
   letter-spacing: -0.01em;
 }
 
@@ -122,7 +96,7 @@ img {
   font-size: 1rem;
   color: var(--clr-brown-light);
   max-width: 520px;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 
@@ -130,9 +104,10 @@ img {
    4. BUTTONS
    ================================================ */
 
-/* Basis-Button-Stile */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 500;
@@ -141,10 +116,9 @@ img {
   cursor: pointer;
   transition: all var(--transition);
   border: none;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
-/* Primär – Terrakotta ausgefüllt */
 .btn.primary {
   background: var(--clr-terra);
   color: var(--clr-white);
@@ -154,10 +128,9 @@ img {
 .btn.primary:hover {
   background: var(--clr-terra-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(196, 98, 45, 0.3);
+  box-shadow: 0 8px 24px rgba(191, 90, 37, 0.28);
 }
 
-/* Ghost – transparenter Rahmen */
 .btn.ghost {
   background: transparent;
   color: var(--clr-brown);
@@ -167,10 +140,9 @@ img {
 
 .btn.ghost:hover {
   border-color: var(--clr-brown-mid);
-  background: var(--clr-cream-dark);
+  background: var(--clr-ivory-dark);
 }
 
-/* Kleiner Button – für Navigation */
 .btn.small {
   background: var(--clr-terra);
   color: var(--clr-white);
@@ -182,7 +154,6 @@ img {
   background: var(--clr-terra-light);
 }
 
-/* Button-Gruppe */
 .actions {
   display: flex;
   gap: 14px;
@@ -199,13 +170,13 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247, 242, 235, 0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(250, 247, 241, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--clr-border);
   padding: 18px 0;
 }
 
-/* Flex-Container für Logo und Navigation */
 .nav {
   display: flex;
   align-items: center;
@@ -213,26 +184,24 @@ img {
   gap: 24px;
 }
 
-/* Logo / Markenname */
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
 }
 
-/* Dekoratives Logo-Icon – Kaffeetassen-Silhouette via CSS */
 .brand-mark {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   background: var(--clr-terra);
   border-radius: 50%;
   position: relative;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(191, 90, 37, 0.25);
 }
 
-/* Tassen-Dampf-Effekt */
 .brand-mark::after {
   content: '☕';
   position: absolute;
@@ -245,21 +214,20 @@ img {
 
 .brand-name {
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: var(--clr-brown);
   letter-spacing: -0.01em;
 }
 
-/* Navigationslinks */
 .menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 .menu a {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--clr-brown-light);
   text-decoration: none;
@@ -276,81 +244,98 @@ img {
    ================================================ */
 
 .hero {
-  padding: 80px 0 100px;
-  background: var(--clr-cream);
+  padding: 90px 0 110px;
+  background: var(--clr-ivory);
   position: relative;
   overflow: hidden;
 }
 
-/* Dekoratives Muster im Hintergrund */
 .hero::before {
   content: '';
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(196, 98, 45, 0.06) 0%, transparent 70%);
+  top: -120px;
+  right: -80px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(191, 90, 37, 0.07) 0%, transparent 65%);
   pointer-events: none;
 }
 
-/* Zweispaltiges Hero-Layout */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(168, 138, 98, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 64px;
+  grid-template-columns: 1fr 360px;
+  gap: 80px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-/* Kleines Label über der Hauptüberschrift */
 .kicker {
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--clr-terra);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-/* Hauptüberschrift */
+.kicker::before {
+  content: '';
+  width: 24px;
+  height: 1.5px;
+  background: var(--clr-terra);
+}
+
 .hero-text h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-size: clamp(3rem, 5.5vw, 5rem);
   font-weight: 300;
   color: var(--clr-brown);
-  line-height: 1.08;
-  margin-bottom: 20px;
+  line-height: 1.07;
+  margin-bottom: 22px;
   letter-spacing: -0.02em;
 }
 
-/* Beschreibungstext */
 .lead {
   font-size: 1.05rem;
   color: var(--clr-brown-light);
   max-width: 460px;
-  line-height: 1.8;
-  margin-bottom: 36px;
+  line-height: 1.85;
+  margin-bottom: 40px;
 }
 
-/* Highlight-Badges unter den Buttons */
 .badges {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 32px;
 }
 
 .badges span {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--clr-brown-mid);
-  background: var(--clr-cream-dark);
+  background: var(--clr-ivory-dark);
   border: 1px solid var(--clr-border);
-  padding: 5px 12px;
+  padding: 5px 14px;
   border-radius: 50px;
 }
 
-/* Rechte Karte im Hero */
+/* Hero-Karte rechts */
 .hero-card {
   background: var(--clr-white);
   border: 1px solid var(--clr-border);
@@ -359,41 +344,38 @@ img {
   overflow: hidden;
 }
 
-/* Oberer Teil der Hero-Karte */
 .hero-card-top {
-  background: var(--clr-terra);
-  padding: 24px 28px;
+  background: linear-gradient(135deg, var(--clr-terra) 0%, var(--clr-terra-light) 100%);
+  padding: 26px 30px;
 }
 
 .hero-card-top h3 {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--clr-white);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  letter-spacing: -0.01em;
 }
 
 .hero-card-top p {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* Liste der Tagesempfehlungen */
 .hero-card-list {
-  padding: 20px 28px;
+  padding: 20px 30px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Einzelner Menüpunkt */
 .item {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-/* Farbiger Punkt vor dem Menüpunkt */
 .dot {
   width: 8px;
   height: 8px;
@@ -417,19 +399,18 @@ img {
 .item-price {
   margin-left: auto;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--clr-terra);
   flex-shrink: 0;
 }
 
-/* Adresse & Öffnungszeit am unteren Rand der Karte */
 .mini-info {
-  padding: 16px 28px 24px;
-  border-top: 1px solid var(--clr-border);
+  padding: 16px 30px 22px;
+  border-top: 1px solid var(--clr-border-light);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .mini-info p {
@@ -446,40 +427,58 @@ img {
    7. MENÜ-SEKTION
    ================================================ */
 
-/* 3-spaltiges Grid für Menükategorien */
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
-/* Einzelne Menükategorie-Karte */
 .menu-card {
   background: var(--clr-white);
-  border: 1px solid var(--clr-border);
+  border: 1px solid var(--clr-border-light);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 36px 30px;
   box-shadow: var(--shadow);
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--clr-terra), var(--clr-terra-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-card:hover::before {
+  transform: scaleX(1);
 }
 
 .menu-card:hover {
   box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  border-color: var(--clr-ivory-mid);
 }
 
 .menu-card h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 400;
   color: var(--clr-terra);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--clr-border);
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--clr-border-light);
+  letter-spacing: -0.01em;
 }
 
-/* Menüliste */
 .menu-card ul {
   list-style: none;
   display: flex;
@@ -494,7 +493,7 @@ img {
   font-size: 0.92rem;
   color: var(--clr-brown);
   padding-bottom: 12px;
-  border-bottom: 1px dashed var(--clr-border);
+  border-bottom: 1px dashed var(--clr-border-light);
 }
 
 .menu-card ul li:last-child {
@@ -504,17 +503,17 @@ img {
 
 .menu-card ul li span:last-child {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--clr-terra);
 }
 
-/* Hinweis unter dem Menü */
 .note {
-  background: var(--clr-cream-dark);
+  background: var(--clr-ivory-dark);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius);
-  padding: 16px 20px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--clr-terra);
 }
 
 .note p {
@@ -531,105 +530,101 @@ img {
    8. ÜBER UNS
    ================================================ */
 
-/* Zweispaltiges Grid: Text links, Karte rechts */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 340px;
-  gap: 64px;
+  gap: 72px;
   align-items: start;
 }
 
 .about-grid h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
   font-weight: 300;
   color: var(--clr-brown);
-  line-height: 1.15;
-  margin-bottom: 20px;
+  line-height: 1.12;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
 }
 
-.about-grid p {
+.about-grid > div > p {
   font-size: 1rem;
   color: var(--clr-brown-light);
-  line-height: 1.8;
+  line-height: 1.85;
   margin-bottom: 16px;
 }
 
-/* Pill-Tags */
 .pill-row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .pill {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--clr-terra);
-  background: rgba(196, 98, 45, 0.08);
-  border: 1px solid rgba(196, 98, 45, 0.2);
-  padding: 5px 14px;
+  background: rgba(191, 90, 37, 0.07);
+  border: 1px solid rgba(191, 90, 37, 0.18);
+  padding: 5px 16px;
   border-radius: 50px;
 }
 
-/* Info-Karte rechts */
 .about-card {
   background: var(--clr-white);
-  border: 1px solid var(--clr-border);
+  border: 1px solid var(--clr-border-light);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 34px 30px;
   box-shadow: var(--shadow);
 }
 
 .about-card h3 {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--clr-brown);
   margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
 .about-card > p {
   font-size: 0.9rem;
   color: var(--clr-brown-light);
-  margin-bottom: 24px;
-  line-height: 1.7;
+  margin-bottom: 26px;
+  line-height: 1.75;
 }
 
-/* Statistiken in der Info-Karte */
 .about-stats {
   display: flex;
   gap: 0;
-  border-top: 1px solid var(--clr-border);
-  padding-top: 20px;
+  border-top: 1px solid var(--clr-border-light);
+  padding-top: 22px;
 }
 
 .stat {
   flex: 1;
   text-align: center;
   padding: 0 12px;
-  border-right: 1px solid var(--clr-border);
+  border-right: 1px solid var(--clr-border-light);
 }
 
-.stat:last-child {
-  border-right: none;
-}
+.stat:last-child { border-right: none; }
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 400;
   color: var(--clr-terra);
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   color: var(--clr-brown-light);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 
@@ -637,98 +632,95 @@ img {
    9. GALERIE
    ================================================ */
 
-/* Asymmetrisches Galerie-Grid */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 200px 200px;
-  gap: 12px;
+  grid-template-rows: 210px 210px;
+  gap: 14px;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-/* Platzhalter-Bilder mit warmen Tönen */
 .ph {
   border-radius: var(--radius);
-  transition: transform var(--transition), filter var(--transition);
+  transition: transform 0.4s var(--transition), filter 0.3s;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
-.ph:hover {
-  transform: scale(1.02);
-  filter: brightness(1.05);
+.ph::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* Verschiedene Braun-Terrakotta-Töne für Platzhalter */
-.ph-1 { background: linear-gradient(135deg, #c4622d 0%, #d4794a 100%); }
-.ph-2 { background: linear-gradient(135deg, #8b5e3c 0%, #a07850 100%); }
-.ph-3 { background: linear-gradient(135deg, #6b4226 0%, #8b5e3c 100%); }
-.ph-4 { background: linear-gradient(135deg, #d4a574 0%, #e8c49a 100%); }
-.ph-5 { background: linear-gradient(135deg, #2c1a0e 0%, #4a2c14 100%); }
-.ph-6 { background: linear-gradient(135deg, #c4a882 0%, #d4bea0 100%); }
+.ph:hover { transform: scale(1.03); }
+.ph:hover::after { opacity: 1; }
 
-/* Erstes Bild nimmt 2 Spalten ein */
-.ph-1 {
-  grid-column: span 2;
-}
+.ph-1 { background: linear-gradient(145deg, #c4622d 0%, #d07040 60%, #a04818 100%); }
+.ph-2 { background: linear-gradient(145deg, #8b5e3c 0%, #a07850 100%); }
+.ph-3 { background: linear-gradient(145deg, #6b4226 0%, #8b5e3c 100%); }
+.ph-4 { background: linear-gradient(145deg, #d4a574 0%, #e8c49a 100%); }
+.ph-5 { background: linear-gradient(145deg, #2c1a0e 0%, #4a2c14 100%); }
+.ph-6 { background: linear-gradient(145deg, #c4a882 0%, #d8c4aa 100%); }
 
-/* Letztes Bild nimmt 2 Spalten ein */
-.ph-6 {
-  grid-column: span 2;
-}
+.ph-1 { grid-column: span 2; }
+.ph-6 { grid-column: span 2; }
 
 
 /* ================================================
    10. ÖFFNUNGSZEITEN
    ================================================ */
 
-/* Zweispaltiges Layout: Text links, Tabelle rechts */
 .hours-grid {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 64px;
+  grid-template-columns: 1fr 420px;
+  gap: 72px;
   align-items: start;
 }
 
 .hours-grid h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
   font-weight: 300;
   color: var(--clr-brown);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
 }
 
-.hours-grid p {
+.hours-grid > div > p {
   font-size: 1rem;
   color: var(--clr-brown-light);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
-/* Öffnungszeiten-Karte */
 .hours-card {
   background: var(--clr-white);
-  border: 1px solid var(--clr-border);
+  border: 1px solid var(--clr-border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow);
 }
 
-/* Einzelne Zeile mit Tag und Uhrzeit */
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--clr-border);
+  padding: 18px 26px;
+  border-bottom: 1px solid var(--clr-border-light);
   font-size: 0.95rem;
+  transition: background var(--transition);
 }
 
-.row:last-child {
-  border-bottom: none;
-}
+.row:hover { background: var(--clr-ivory-dark); }
+.row:last-child { border-bottom: none; }
 
 .row span:first-child {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--clr-brown);
 }
 
@@ -736,7 +728,6 @@ img {
   color: var(--clr-brown-mid);
 }
 
-/* Gedimmte Zeile für Feiertage */
 .row.subtle span {
   color: var(--clr-brown-light);
   font-style: italic;
@@ -747,57 +738,54 @@ img {
    11. KONTAKT
    ================================================ */
 
-/* Zentrierter Kontaktbereich */
 .contact-simple {
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
   text-align: center;
 }
 
 .contact-simple .section-head {
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
-/* 3-spaltiges Karten-Grid */
 .contact-cards.simple {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 36px;
 }
 
-/* Einzelne Kontakt-Karte */
 .mini-card {
   background: var(--clr-white);
-  border: 1px solid var(--clr-border);
+  border: 1px solid var(--clr-border-light);
   border-radius: var(--radius-lg);
-  padding: 24px 20px;
+  padding: 26px 22px;
   text-align: center;
   box-shadow: var(--shadow);
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
 
 .mini-card:hover {
   box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  border-color: rgba(191, 90, 37, 0.2);
 }
 
 .mini-title {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--clr-terra);
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .mini-text {
   font-size: 0.92rem;
   color: var(--clr-brown);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-/* Button-Gruppe zentrieren */
 .contact-simple .actions {
   justify-content: center;
 }
@@ -808,64 +796,61 @@ img {
    ================================================ */
 
 .footer {
-  background: var(--clr-brown);
-  color: rgba(247, 242, 235, 0.7);
-  padding: 56px 0 36px;
+  background: var(--clr-espresso);
+  color: rgba(250, 247, 241, 0.6);
+  padding: 64px 0 40px;
 }
 
-/* Dreispaltiges Footer-Grid */
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid rgba(247, 242, 235, 0.1);
-  margin-bottom: 28px;
+  gap: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(250, 247, 241, 0.08);
+  margin-bottom: 32px;
 }
 
-/* Markenname im Footer */
 .footer-brand {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  color: var(--clr-cream);
-  margin-bottom: 10px;
+  color: var(--clr-ivory);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
-/* Beschreibungstext */
 .footer-text {
   font-size: 0.88rem;
-  line-height: 1.7;
+  line-height: 1.75;
+  max-width: 260px;
 }
 
-/* Footer-Links */
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 13px;
 }
 
 .footer-links a {
   font-size: 0.88rem;
-  color: rgba(247, 242, 235, 0.6);
+  color: rgba(250, 247, 241, 0.5);
   text-decoration: none;
   transition: color var(--transition);
 }
 
 .footer-links a:hover {
-  color: var(--clr-cream);
+  color: var(--clr-ivory);
 }
 
-/* Copyright-Zeile */
 .footer-note {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 .footer-note p {
   font-size: 0.82rem;
-  color: rgba(247, 242, 235, 0.45);
+  color: rgba(250, 247, 241, 0.35);
 }
 
 
@@ -873,83 +858,31 @@ img {
    13. RESPONSIVE
    ================================================ */
 
-
-/* ---- Tablet (max. 900px) ---- */
 @media (max-width: 900px) {
+  .section { padding: 80px 0; }
 
-  /* Weniger Sektionsabstand */
-  .section {
-    padding: 72px 0;
-  }
-
-  /* Hero: einspaltig */
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  /* Hero-Karte volle Breite */
-  .hero-card {
-    max-width: 480px;
-  }
-
-  /* Über uns: einspaltig */
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  /* Öffnungszeiten: einspaltig */
-  .hours-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  /* Footer: zweispaltig */
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
+  .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+  .hero-card { max-width: 480px; }
+  .about-grid { grid-template-columns: 1fr; gap: 44px; }
+  .hours-grid { grid-template-columns: 1fr; gap: 44px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .menu-grid { grid-template-columns: 1fr 1fr; }
 }
 
-
-/* ---- Smartphone (max. 640px) ---- */
 @media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .section { padding: 64px 0; }
 
-  /* Navigation: Links ausblenden */
-  .menu a:not(.btn) {
-    display: none;
-  }
+  .menu a:not(.btn) { display: none; }
+  .hero-text h1 { font-size: 2.8rem; }
 
-  /* Hero-Überschrift kleiner */
-  .hero-text h1 {
-    font-size: 2.6rem;
-  }
-
-  /* Galerie: 2 Spalten */
   .gallery {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
   }
+  .ph-1, .ph-6 { grid-column: span 1; }
 
-  /* Galerie-Spans zurücksetzen */
-  .ph-1,
-  .ph-6 {
-    grid-column: span 1;
-  }
-
-  /* Kontaktkarten: einspaltig */
-  .contact-cards.simple {
-    grid-template-columns: 1fr;
-  }
-
-  /* Footer: einspaltig */
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Menü-Grid: einspaltig */
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
+  .contact-cards.simple { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .menu-grid { grid-template-columns: 1fr; }
 }
