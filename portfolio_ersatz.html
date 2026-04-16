@@ -100,7 +100,7 @@
         </div>
         <div class="service-card stagger-item">
           <div class="service-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+           <!----> <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <h3>Moderne Designs</h3>
           <p>Kein Template-Einheitsbrei. Jede Website wird individuell auf dein Unternehmen angepasst.</p>
@@ -165,7 +165,6 @@
           <p>Fokus auf Atmosphäre, Öffnungszeiten und Standort. Perfekt für Cafés und lokale Shops.</p>
           <div class="demo-scene-actions">
             <a href="demos/cafe/cafe.html" target="_blank" rel="noopener" class="btn-primary">Live Demo →</a>
-            <a href="#contact" class="btn-scene-text js-open-contact" data-style="Café-Stil">Diesen Stil wählen</a>
           </div>
         </div>
         <div class="demo-scene-preview">
@@ -214,7 +213,6 @@
           <p>Übersichtliche Darstellung von Leistungen, Kontakt und Referenzen. Ideal für Handwerksbetriebe.</p>
           <div class="demo-scene-actions">
             <a href="demos/handwerker/handwerker.html" target="_blank" rel="noopener" class="btn-primary btn-primary--orange">Live Demo →</a>
-            <a href="#contact" class="btn-scene-text js-open-contact" data-style="Handwerk & Gewerbe-Stil">Diesen Stil wählen</a>
           </div>
         </div>
       </div>
@@ -231,7 +229,6 @@
           <p>Einfühlsames Design für Pflegedienste und Gesundheitsdienstleister. Vertrauen auf den ersten Blick.</p>
           <div class="demo-scene-actions">
             <a href="demos/pflege/pflege.html" target="_blank" rel="noopener" class="btn-primary btn-primary--sage">Live Demo →</a>
-            <a href="#contact" class="btn-scene-text js-open-contact" data-style="Pflege & Gesundheit-Still">Diesen Stil wählen</a>
           </div>
         </div>
         <div class="demo-scene-preview">
@@ -281,10 +278,10 @@
             <li class="muted"><span>–</span> Mehrere Unterseiten</li>
             <li class="muted"><span>–</span> Priorisierter Support</li>
           </ul>
-          <a href="#contact" class="btn-outline js-open-contact">Jetzt starten</a>
+          <a href="#contact" class="btn-outline js-open-contact" data-package="Starter">Jetzt starten</a>
         </div>
         <div class="price-card featured">
-          <div class="price-badge">Beliebteste Wahl</div>
+         <!-- <div class="price-badge">Beliebteste Wahl</div> -->
           <div class="price-card-top">
             <p class="price-name">Business</p>
             <div class="price-amount">
@@ -303,7 +300,7 @@
             <li><span class="check">✓</span> Google Maps Integration</li>
             <li class="muted"><span>–</span> Priorisierter Support</li>
           </ul>
-          <a href="#contact" class="btn-primary js-open-contact">Jetzt starten</a>
+          <a href="#contact" class="btn-primary js-open-contact" data-package="Buisiness">Jetzt starten</a>
         </div>
         <div class="price-card">
           <div class="price-card-top">
@@ -324,7 +321,7 @@
             <li><span class="check">✓</span> Google Maps Integration</li>
             <li><span class="check">✓</span> Priorisierter Support</li>
           </ul>
-          <a href="#contact" class="btn-outline js-open-contact">Jetzt starten</a>
+          <a href="#contact" class="btn-outline js-open-contact" data-package="Premium">Jetzt starten</a>
         </div>
       </div>
       <p class="pricing-note">Alle Preise zzgl. MwSt. · Monatlich kündbar · Keine Einrichtungsgebühr</p>
@@ -399,7 +396,40 @@
     </div>
   </footer>
 
-  <!-- MODAL -->
+  <!-- STYLE PICKER MODAL -->
+  <div class="modal" id="stylePickerModal" aria-hidden="true">
+    <div class="modal-overlay" id="stylePickerOverlay"></div>
+    <div class="modal-dialog style-picker-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close" id="stylePickerClose" aria-label="Schließen">×</button>
+      <h2>Design wählen</h2>
+      <p class="modal-sub">Welcher Stil gefällt dir am besten? Wir passen ihn komplett an dein Unternehmen an.</p>
+      <div class="style-picker-grid">
+        <button class="style-option" data-style="Café & Gastronomie">
+          <div class="style-option-preview style-preview--cafe"></div>
+          <div class="style-option-info">
+            <strong>Café & Gastronomie</strong>
+            <span>Warm &amp; Editorial</span>
+          </div>
+        </button>
+        <button class="style-option" data-style="Handwerk & Gewerbe">
+          <div class="style-option-preview style-preview--handwerk"></div>
+          <div class="style-option-info">
+            <strong>Handwerk & Gewerbe</strong>
+            <span>Klar &amp; Vertrauensvoll</span>
+          </div>
+        </button>
+        <button class="style-option" data-style="Pflege & Gesundheit">
+          <div class="style-option-preview style-preview--pflege"></div>
+          <div class="style-option-info">
+            <strong>Pflege & Gesundheit</strong>
+            <span>Warm &amp; Professionell</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT MODAL -->
   <div class="modal" id="contactModal" aria-hidden="true">
     <div class="modal-overlay js-close-contact"></div>
     <div class="modal-dialog" role="dialog" aria-modal="true">
@@ -418,19 +448,26 @@
   </div>
 
 <script>
+// Warte bis das gesamte HTML geladen ist, bevor das Script ausgeführt wird
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
      HEADER SCROLL EFFECT
   ========================================= */
+
+  // Header-Element aus dem DOM holen
   const header = document.querySelector(".header");
 
+  // Bei jedem Scroll-Ereignis prüfen wie weit der Nutzer gescrollt hat
   window.addEventListener("scroll", () => {
+    // Sicherheitscheck: falls kein Header gefunden wurde, abbrechen
     if (!header) return;
 
+    // Ab 20px Scroll-Tiefe bekommt der Header die Klasse "scrolled" (für den Blur-Effekt)
     if (window.scrollY > 20) {
       header.classList.add("scrolled");
     } else {
+      // Ganz oben angekommen: Klasse wieder entfernen
       header.classList.remove("scrolled");
     }
   });
@@ -439,15 +476,20 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================
      MOBILE NAVIGATION
   ========================================= */
+
+  // Burger-Button und das Nav-Menü aus dem DOM holen
   const burger = document.querySelector(".nav-burger");
   const navLinks = document.querySelector(".nav-links");
 
+  // Nur weitermachen wenn beide Elemente existieren
   if (burger && navLinks) {
+
+    // Klick auf Burger-Button: Menü ein- oder ausblenden
     burger.addEventListener("click", () => {
       navLinks.classList.toggle("open");
     });
 
-    // 👉 Menü schließt beim Klick auf Link
+    // Jeden Link im Menü finden und beim Klick das Menü schließen
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
@@ -459,16 +501,21 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================
      SCROLL REVEAL (OPTIMIERT)
   ========================================= */
+
+  // Alle Elemente sammeln die beim Scrollen eingeblendet werden sollen
   const revealElements = document.querySelectorAll(".reveal, .stagger-item");
 
   const revealOnScroll = () => {
+    // Auslöse-Grenze: 85% der Fensterhöhe vom oberen Rand
     const triggerBottom = window.innerHeight * 0.85;
 
     revealElements.forEach((el, index) => {
+      // Position des Elements relativ zum sichtbaren Bereich ermitteln
       const rect = el.getBoundingClientRect();
 
-      // 👉 verhindert mehrfaches Triggern (Performance Boost)
+      // Nur einblenden wenn das Element noch nicht sichtbar ist UND in den Auslösebereich kommt
       if (!el.classList.contains("revealed") && rect.top < triggerBottom) {
+        // Leichte Verzögerung pro Element für einen gestaffelten Einblende-Effekt
         setTimeout(() => {
           el.classList.add("revealed");
         }, index * 80);
@@ -476,43 +523,88 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // Beim Scrollen und einmalig beim Laden prüfen
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll();
 
 
   /* =========================================
-     MODAL + STYLE TRANSFER (CLEAN)
+     MODALS
   ========================================= */
-  const modal = document.querySelector(".modal");
-  const openButtons = document.querySelectorAll(".js-open-contact");
-  const closeButtons = document.querySelectorAll(".modal-close, .modal-overlay");
-  const textarea = modal ? modal.querySelector("textarea") : null;
 
-  openButtons.forEach(btn => {
+  // Beide Modal-Elemente und das Textarea im Kontaktformular holen
+  const contactModal = document.getElementById("contactModal");
+  const styleModal   = document.getElementById("stylePickerModal");
+  const textarea     = contactModal ? contactModal.querySelector("textarea") : null;
+
+  // Speichert das gewählte Paket zwischen den beiden Modal-Schritten
+  let pendingPackage = "";
+
+  // Kontaktformular öffnen und Paket + Design-Stil ins Textfeld eintragen
+  function openContact(selectedPackage, selectedStyle) {
+    if (textarea) {
+      textarea.value = `Paket: ${selectedPackage}\nDesign-Stil: ${selectedStyle}`;
+    }
+    if (contactModal) contactModal.classList.add("open");
+  }
+
+  // Style Picker schließen
+  function closeStylePicker() {
+    if (styleModal) styleModal.classList.remove("open");
+  }
+
+  // Kontaktformular schließen
+  function closeContact() {
+    if (contactModal) contactModal.classList.remove("open");
+  }
+
+  // Preispaket-Buttons (haben data-package): öffnen zuerst den Style Picker
+  document.querySelectorAll(".js-open-contact[data-package]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      // Verhindert, dass der Link zur #contact Sektion springt
+      e.preventDefault();
+      // Gewähltes Paket zwischenspeichern für den nächsten Schritt
+      pendingPackage = btn.getAttribute("data-package");
+      // Style Picker Modal öffnen
+      if (styleModal) styleModal.classList.add("open");
+    });
+  });
+
+  // Alle anderen Buttons ohne data-package (z.B. "Kostenloses Erstgespräch"): öffnen direkt das Kontaktformular
+  document.querySelectorAll(".js-open-contact:not([data-package])").forEach(btn => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-
-      if (modal) modal.classList.add("open");
-
-      // 👉 Stil automatisch ins Formular eintragen
-      const style = btn.getAttribute("data-style");
-
-      if (style && textarea) {
-        textarea.value = `Ich interessiere mich für den Stil: ${style}.`;
-      }
+      // Textfeld leeren, da kein Paket vorausgewählt wurde
+      if (textarea) textarea.value = "";
+      if (contactModal) contactModal.classList.add("open");
     });
   });
 
-  closeButtons.forEach(btn => {
+  // Klick auf eine Design-Kachel im Style Picker
+  document.querySelectorAll(".style-option").forEach(btn => {
     btn.addEventListener("click", () => {
-      if (modal) modal.classList.remove("open");
+      // Gewählten Stil aus dem data-style Attribut lesen
+      const selectedStyle = btn.getAttribute("data-style");
+      // Style Picker schließen und danach Kontaktformular mit den Daten öffnen
+      closeStylePicker();
+      openContact(pendingPackage, selectedStyle);
     });
   });
 
-  // ESC schließt Modal
+  // X-Button und Overlay des Style Pickers schließen den Style Picker
+  document.getElementById("stylePickerClose").addEventListener("click", closeStylePicker);
+  document.getElementById("stylePickerOverlay").addEventListener("click", closeStylePicker);
+
+  // X-Button und Overlay des Kontaktformulars schließen das Kontaktformular
+  document.querySelectorAll(".js-close-contact").forEach(btn => {
+    btn.addEventListener("click", closeContact);
+  });
+
+  // ESC-Taste schließt welches Modal auch immer gerade offen ist
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal) {
-      modal.classList.remove("open");
+    if (e.key === "Escape") {
+      closeStylePicker();
+      closeContact();
     }
   });
 

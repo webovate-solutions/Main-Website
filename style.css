@@ -1723,6 +1723,75 @@ body {
   justify-content: center;
 }
 
+/* Style Picker */
+.style-picker-dialog {
+  max-width: 680px;
+}
+
+.style-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.style-option {
+  background: var(--clr-dark-3);
+  border: 1.5px solid var(--clr-dark-4);
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.style-option:hover {
+  border-color: var(--clr-lime);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.style-option-preview {
+  width: 100%;
+  height: 110px;
+}
+
+.style-preview--cafe {
+  background: linear-gradient(135deg, #c8894a 0%, #8b5a2b 100%);
+}
+
+.style-preview--handwerk {
+  background: linear-gradient(135deg, #1b2a4a 0%, #e8642c 100%);
+}
+
+.style-preview--pflege {
+  background: linear-gradient(135deg, #7aab8a 0%, #3d6b50 100%);
+}
+
+.style-option-info {
+  padding: 12px 14px;
+}
+
+.style-option-info strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  margin-bottom: 2px;
+}
+
+.style-option-info span {
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+}
+
+@media (max-width: 540px) {
+  .style-picker-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ================================================
    16. RESPONSIVE
