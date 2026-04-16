@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danke – Webovate Solutions</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+ 
+</head>
+<body>
+
+  <div class="thankyou-page">
+    <div class="thankyou-orb thankyou-orb-1"></div>
+    <div class="thankyou-orb thankyou-orb-2"></div>
+
+    <!-- Header -->
+    <header class="thankyou-header">
+      <a href="index.html" class="logo">Webovate<span class="logo-dot">.</span></a>
+    </header>
+
+    <!-- Main -->
+    <main class="thankyou-main">
+      <div class="thankyou-card">
+
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24">
+            <polyline class="check-path" points="5 12 10 17 19 8" />
+          </svg>
+        </div>
+
+        <p class="thankyou-eyebrow">Nachricht erhalten</p>
+        <h1 class="thankyou-heading">Danke für<br><em>deine Anfrage.</em></h1>
+        <p class="thankyou-text">
+          Wir haben deine Nachricht erhalten und melden uns<br>
+          innerhalb von <strong style="color: var(--clr-text);">24 Stunden</strong> persönlich bei dir.
+        </p>
+
+        <div class="thankyou-actions">
+          <a href="index.html" class="btn-primary">Zurück zur Startseite</a>
+          <a href="index.html#prototypes" class="btn-ghost">Demos ansehen</a>
+        </div>
+
+        <div class="thankyou-divider"></div>
+        <p class="thankyou-note">
+          Fragen? Schreib uns direkt:
+          <a href="mailto:hello@webovate.de">hello@webovate.de</a>
+        </p>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="thankyou-footer">
+      <p>© 2026 Webovate Solutions · <a href="index.html#impressum" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Impressum</a></p>
+    </footer>
+
+  </div>
+
+
+</body>
+
+
+
+ <style>
+    .thankyou-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--clr-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient glow orbs matching hero */
+    .thankyou-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+    }
+    .thankyou-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(200,245,71,0.08) 0%, transparent 70%);
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .thankyou-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(100,140,255,0.06) 0%, transparent 70%);
+      bottom: 0;
+      right: -100px;
+    }
+
+    /* Simple header */
+    .thankyou-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Hero content */
+    .thankyou-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px 80px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .thankyou-card {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Animated check circle */
+    .check-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--clr-accent-glow);
+      border: 1.5px solid rgba(200, 245, 71, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      animation: checkPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .check-circle svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--clr-accent);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .check-circle svg .check-path {
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      animation: drawCheck 0.4s 0.35s ease forwards;
+    }
+
+    @keyframes checkPop {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .thankyou-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.5s ease forwards;
+    }
+
+    .thankyou-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--clr-white);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.6s ease forwards;
+    }
+
+    .thankyou-heading em {
+      font-style: italic;
+      color: var(--clr-accent);
+    }
+
+    .thankyou-text {
+      font-size: 1.05rem;
+      color: var(--clr-text-muted);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.7s ease forwards;
+    }
+
+    .thankyou-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.8s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Divider */
+    .thankyou-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--clr-border);
+      margin: 48px auto 0;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.9s ease forwards;
+    }
+
+    .thankyou-note {
+      margin-top: 24px;
+      font-size: 0.82rem;
+      color: var(--clr-text-muted);
+      opacity: 0;
+      animation: fadeUp 0.5s 1s ease forwards;
+    }
+
+    .thankyou-note a {
+      color: var(--clr-text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color var(--transition);
+    }
+
+    .thankyou-note a:hover {
+      color: var(--clr-text);
+    }
+
+    /* Minimal footer */
+    .thankyou-footer {
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid var(--clr-border);
+      position: relative;
+      z-index: 10;
+    }
+
+    .thankyou-footer p {
+      font-size: 0.8rem;
+      color: var(--clr-text-muted);
+    }
+  </style>
+
+</html>

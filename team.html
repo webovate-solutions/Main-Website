@@ -5,62 +5,418 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team – Webovate Solutions</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── Team Hero ── */
+    .team-hero {
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+    }
+    .team-hero-orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(200,245,71,0.07) 0%, transparent 70%);
+      top: -160px;
+      right: -100px;
+    }
+    .team-hero-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(100,140,255,0.06) 0%, transparent 70%);
+      bottom: -80px;
+      left: -80px;
+    }
+
+    .team-hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .team-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,245,71,0.07);
+      border: 1px solid rgba(200,245,71,0.18);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 28px;
+    }
+
+    .team-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--clr-white);
+      margin-bottom: 24px;
+      max-width: 560px;
+    }
+
+    .team-hero h1 em {
+      font-style: italic;
+      color: var(--clr-accent);
+    }
+
+    .team-hero-desc {
+      font-size: 1.05rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ── Team Grid ── */
+    .team-section {
+      padding: 60px 0 100px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .team-card {
+      background: var(--clr-dark-2);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .team-card:hover {
+      border-color: var(--clr-border-light);
+      transform: translateY(-4px);
+    }
+
+    .team-card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter var(--transition-slow);
+    }
+
+    .team-card:hover .team-card-img {
+      filter: grayscale(0%);
+    }
+
+    .team-card-body {
+      padding: 28px 28px 32px;
+    }
+
+    .team-card-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--clr-white);
+      margin-bottom: 4px;
+    }
+
+    .team-card-role {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 16px;
+    }
+
+    .team-card-desc {
+      font-size: 0.93rem;
+      color: var(--clr-text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── Values strip ── */
+    .team-values {
+      padding: 72px 0;
+      border-top: 1px solid var(--clr-border);
+      border-bottom: 1px solid var(--clr-border);
+      margin-bottom: 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .value-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .value-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius);
+      background: var(--clr-accent-glow);
+      border: 1px solid rgba(200,245,71,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-accent);
+      margin-bottom: 4px;
+    }
+
+    .value-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--clr-white);
+    }
+
+    .value-desc {
+      font-size: 0.88rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .team-cta {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .team-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 300;
+      color: var(--clr-white);
+      margin-bottom: 20px;
+    }
+
+    .team-cta h2 em {
+      font-style: italic;
+      color: var(--clr-accent);
+    }
+
+    .team-cta p {
+      font-size: 1rem;
+      color: var(--clr-text-muted);
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .team-cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+  </style>
 </head>
-
-
- <!-- HEADER -->
-  <header class="header">
-    <div class="container nav">
-      <h2 class="logo">Webovate Solutions</h2>
-      <nav>
-        <a href="index.html" class="btn-small">Home</a>
-      </nav>
-    </div>
-  </header>
-
-
 
 <body>
 
-  <section class="section team">
-    <div class="container">
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">Webovate<span class="logo-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="index.html#services">Leistungen</a>
+        <a href="team.html" style="color: var(--clr-accent);">Team</a>
+        <a href="index.html#process">Ablauf</a>
+        <a href="index.html#prototypes">Demos</a>
+        <a href="index.html#pricing">Preise</a>
+        <a href="index.html#contact" class="btn-nav">Erstgespräch →</a>
+      </nav>
+      <button class="nav-burger" id="burger" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-      <!-- Überschrift + Text -->
-      <div class="team-intro">
-        <h1>Das sind wir</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        </p>
-      </div>
-
-      <!-- Team Grid -->
-      <div class="team-grid">
-
-        <!-- Person 1 -->
-        <div class="team-card">
-          <img src="assets/images/bild_julius.jpeg" alt="Julius – Webovate Solutions" />
-          <h3>Julius</h3>
-          <p class="role">Webentwicklung</p>
-          <p class="desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-          </p>
-        </div>
-
-        <!-- Person 2 -->
-        <div class="team-card">
-          <img src="assets/images/kollege.jpg" alt="Name – Webovate Solutions" />
-          <h3>Name</h3>
-          <p class="role">Projektmanagement & Design</p>
-          <p class="desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-          </p>
-        </div>
-
-      </div>
-
+  <!-- TEAM HERO -->
+  <section class="team-hero">
+    <div class="team-hero-orb team-hero-orb-1"></div>
+    <div class="team-hero-orb team-hero-orb-2"></div>
+    <div class="container team-hero-inner">
+      <div class="team-hero-badge">✦ Das Team</div>
+      <h1>Menschen hinter<br><em>Webovate.</em></h1>
+      <p class="team-hero-desc">
+        Wir sind ein kleines, fokussiertes Team mit einer klaren Mission:
+        kleinen Unternehmen eine professionelle Online-Präsenz ermöglichen –
+        ohne Stress, ohne hohe Kosten.
+      </p>
     </div>
   </section>
+
+  <!-- VALUES -->
+  <section class="team-values reveal">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Was uns antreibt</p>
+        <h2>Unsere Werte</h2>
+      </div>
+      <div class="values-grid stagger-parent">
+        <div class="value-item stagger-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p class="value-title">Verlässlichkeit</p>
+          <p class="value-desc">Was wir versprechen, halten wir. Reaktionszeit, Qualität, Preis – keine Überraschungen.</p>
+        </div>
+        <div class="value-item stagger-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <p class="value-title">Einfachheit</p>
+          <p class="value-desc">Technik soll kein Hindernis sein. Wir machen Websites so einfach wie möglich für unsere Kunden.</p>
+        </div>
+        <div class="value-item stagger-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="value-title">Qualität</p>
+          <p class="value-desc">Kein Template-Einheitsbrei. Jede Website wird individuell auf das Unternehmen zugeschnitten.</p>
+        </div>
+        <div class="value-item stagger-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="value-title">Partnerschaft</p>
+          <p class="value-desc">Wir denken langfristig. Unsere Kunden sind Partner, keine einmaligen Aufträge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM GRID -->
+  <section class="team-section reveal">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Das Team</p>
+        <h2>Wer steckt<br>dahinter?</h2>
+      </div>
+      <div class="team-grid stagger-parent">
+
+        <!-- Julius -->
+        <div class="team-card stagger-item">
+          <img src="assets/images/bild_julius.jpeg" alt="Julius – Webovate Solutions" class="team-card-img" />
+          <div class="team-card-body">
+            <h3 class="team-card-name">Julius</h3>
+            <p class="team-card-role">Gründer & Webentwicklung</p>
+            <p class="team-card-desc">
+              Julius kümmert sich um Design, Entwicklung und die technische Umsetzung.
+              Sein Ziel: Websites, die nicht nur gut aussehen, sondern auch wirklich funktionieren.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="team-cta reveal">
+    <div class="container">
+      <h2>Bereit für deine<br><em>neue Website?</em></h2>
+      <p>Schreib uns, wir melden uns innerhalb von 24 Stunden und beraten dich kostenlos.</p>
+      <div class="team-cta-actions">
+        <a href="index.html#contact" class="btn-primary">Kostenloses Erstgespräch</a>
+        <a href="index.html#pricing" class="btn-ghost">Preise ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo-text">Webovate<span class="logo-dot">.</span></a>
+        <p>Webseiten als Service für kleine Unternehmen: modern, planbar und ohne Stress.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Navigation</p>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Leistungen</a></li>
+          <li><a href="index.html#process">Ablauf</a></li>
+          <li><a href="index.html#prototypes">Demos</a></li>
+          <li><a href="index.html#pricing">Preise</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Demos</p>
+        <ul class="footer-links">
+          <li><a href="demos/cafe/cafe.html" target="_blank" rel="noopener">Café</a></li>
+          <li><a href="demos/handwerker/handwerker.html" target="_blank" rel="noopener">Handwerker</a></li>
+          <li><a href="demos/pflege/pflege.html" target="_blank" rel="noopener">Pflegedienst</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Kontakt</p>
+        <ul class="footer-links">
+          <li><a href="mailto:hello@webovate.de">hello@webovate.de</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Webovate Solutions</p>
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <span>·</span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.querySelector(".header");
+    window.addEventListener("scroll", () => {
+      if (!header) return;
+      header.classList.toggle("scrolled", window.scrollY > 20);
+    });
+
+    // Mobile nav
+    const burger = document.querySelector(".nav-burger");
+    const navLinks = document.querySelector(".nav-links");
+    if (burger && navLinks) {
+      burger.addEventListener("click", () => navLinks.classList.toggle("open"));
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+    }
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal, .stagger-item");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      revealElements.forEach((el, index) => {
+        if (!el.classList.contains("revealed") && el.getBoundingClientRect().top < triggerBottom) {
+          setTimeout(() => el.classList.add("revealed"), index * 80);
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
 
 </body>
 </html>
