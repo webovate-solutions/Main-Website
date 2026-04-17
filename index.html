@@ -23,7 +23,7 @@
 
     <nav class="nav-links">
       <a href="#services">Konzepte</a>
-      <a href="team.html">Über mich</a>
+     <!-- <a href="team.html">Über mich</a> -->
       <a href="#prototypes">Demos</a>
       <a href="#contact">Kontakt</a>
     </nav>
@@ -262,6 +262,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll();
+
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      await fetch(contactForm.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      window.location.href = "danke.html";
+    });
+  }
 
 });
 </script>
