@@ -641,36 +641,13 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
 }
 
-.ph {
-  border-radius: var(--radius);
-  transition: transform 0.4s var(--transition), filter 0.3s;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
-
-.ph::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.15), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.ph:hover { transform: scale(1.03); }
-.ph:hover::after { opacity: 1; }
-
-.ph-1 { background: linear-gradient(145deg, #c4622d 0%, #d07040 60%, #a04818 100%); }
-.ph-2 { background: linear-gradient(145deg, #8b5e3c 0%, #a07850 100%); }
-.ph-3 { background: linear-gradient(145deg, #6b4226 0%, #8b5e3c 100%); }
-.ph-4 { background: linear-gradient(145deg, #d4a574 0%, #e8c49a 100%); }
-.ph-5 { background: linear-gradient(145deg, #2c1a0e 0%, #4a2c14 100%); }
-.ph-6 { background: linear-gradient(145deg, #c4a882 0%, #d8c4aa 100%); }
-
-.ph-1 { grid-column: span 2; }
-.ph-6 { grid-column: span 2; }
-
 
 /* ================================================
    10. ÖFFNUNGSZEITEN
